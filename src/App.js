@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route, useLocation, useHistory } from 'react-router-dom'
 import Nav from 'components/Nav'
-import {WheelHandler} from 'Handlers'
+import {WheelHandler, TouchStartHandler, TouchMoveHandler} from 'Handlers'
 
 import 'App.css'
 
@@ -23,8 +23,13 @@ function App() {
   //add listener after screen is set
   React.useEffect(() => {
     window.addEventListener('wheel', WheelHandler(setCurrent, (navList.length-1), 250), {passive: false})
+    window.addEventListener('touchstart', TouchStartHandler, {passive: false})
+    window.addEventListener('touchmove', TouchMoveHandler(setCurrent, (navList.length-1), 330), {passive: false})
+
     return () => {
       window.removeEventListener('wheel', WheelHandler(setCurrent, (navList.length-1), 250))
+      window.removeEventListener('touchstart', TouchStartHandler)
+      window.removeEventListener('touchmove', TouchMoveHandler(setCurrent, (navList.length-1), 330))
     }
     //eslint-disable-next-line
   },[])
@@ -41,7 +46,7 @@ function App() {
       <Nav list={navList}/>
       <Switch>
         <Route exact path="/">
-          <section className="fullscreen">
+          <section className="fullscreen" style={{backgroundColor: '#fff'}}>
             Top
             <div>
               
@@ -49,17 +54,17 @@ function App() {
           </section>
         </Route>
         <Route path="/projects">
-          <section className="fullscreen">
+          <section className="fullscreen"style={{backgroundColor: '#ddd'}}>
             projects
           </section>
         </Route>
         <Route path="/skills">
-          <section className="fullscreen">
+          <section className="fullscreen" style={{backgroundColor: '#aaa'}}>
             skills
           </section>
         </Route>
         <Route path="/me">
-          <section className="fullscreen">
+          <section className="fullscreen" style={{backgroundColor: '#555'}}>
             about + contact
           </section>
         </Route>
