@@ -1,13 +1,16 @@
 import React from 'react'
 import { Switch, Route, useLocation, useHistory } from 'react-router-dom'
 import Nav from 'components/Nav'
+import {throttle, debounce} from 'lodash'
 
+import {WheelHandler} from 'Handlers'
 
+import 'App.css'
 
 function App() {
-  const history = useHistory()
   let location = useLocation()
-  let current
+  const history = useHistory()
+  const [ current, setCurrent] = React.useState()
   
   const navList = [
     {path: '/', content: 'Hi!', altContent: 'Top'},
@@ -16,58 +19,55 @@ function App() {
     {path: '/me', content: 'About'}
   ]
   
-  for( const index in navList ){
-    if(navList[index].path === location.pathname){
-      current = parseInt(index)
-    }
-  } 
   
   //wheelAction requires useCallback because the current calue is not updated on rerender.
   //The theory is that once called wheelAction runs once then the entire component is rerendered, however the values inside the function are not redefined.
-  const wheelAction = React.useCallback((event) => {
-    if(event.deltaY < 0 && current !== 0) {
-      history.push(navList[current-1].path)
-    }
-    if(event.deltaY > 0 && current < navList.length-1) {
-      history.push(navList[current+1].path)
-
-    }
-    // eslint-disable-next-line
-  }, [current])
-  
+  const wheelAction = React.useCallback(debounce(WheelHandler(current, navList), 500, { maxWait: 500}),[navList])
   
   React.useEffect(() => {
-    window.addEventListener('wheel', wheelAction)
+    for( const index in navList ){
+      if(navList[index].path === location.pathname){
+        setCurrent(parseInt(index))
+      }
+    } 
+  })
+
+  React.useEffect(() => {
+    window.addEventListener('wheel', wheelAction, {passive: false})
     return () => {
-      window.removeEventListener('wheel', wheelAction)
+      window.removeEventListener('wheel', wheelAction, {passive: false})
+
     }
-  }, [wheelAction])
+  },[wheelAction])
 
   return (
     <>
-      <Nav list={navList}/>  
+      <Nav list={navList}/>
       <Switch>
         <Route exact path="/">
-          <header className="main-banner">
-            Header
-          </header>
+          <section className="fullscreen">
+            Top
+            <div>
+              
+            </div>
+          </section>
         </Route>
         <Route path="/projects">
-          <section>
+          <section className="fullscreen">
             projects
           </section>
         </Route>
         <Route path="/skills">
-          <section>
+          <section className="fullscreen">
             skills
           </section>
         </Route>
         <Route path="/me">
-          <section>
+          <section className="fullscreen">
             about + contact
           </section>
         </Route>
-      </Switch>
+      </Switch>  
     </>
   );
 }
