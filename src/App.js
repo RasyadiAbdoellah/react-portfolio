@@ -26,11 +26,13 @@ function App() {
     return () => {
       window.removeEventListener('wheel', WheelHandler(setCurrent, (navList.length-1), 250))
     }
+    //eslint-disable-next-line
   },[])
 
   //push history state when current value changes
   React.useEffect(() => {
     history.push(navList[current].path)
+    //eslint-disable-next-line
   },[current])
 
 
