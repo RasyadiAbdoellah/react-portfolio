@@ -6,6 +6,14 @@ import Nav from 'components/Nav'
 import Container from 'components/Container'
 import 'App.css'
 
+function usePrevious(value) {
+  const ref = React.useRef();
+  React.useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
+}
+
 function App() {
   
   let location = useLocation()
@@ -18,9 +26,15 @@ function App() {
     {path: '/me', content: 'About'}
   ]
   
-  //sets current to index of current path
+  //sets current to index of current path and stores previous current state in prev
   const [current, setCurrent] = React.useState(navList.map(e => e.path).indexOf(location.pathname))
-  
+  const prev = usePrevious(current)
+
+
+  React.useEffect(() => {
+    setCurrent(navList.map(e => e.path).indexOf(location.pathname))
+  }, [location.pathname])
+
   //add listener after screen is set
   React.useEffect(() => {
     window.addEventListener('wheel', WheelHandler(setCurrent, (navList.length-1), 250), {passive: false})
@@ -32,11 +46,11 @@ function App() {
       window.removeEventListener('touchstart', TouchStartHandler)
       window.removeEventListener('touchmove', TouchMoveHandler(setCurrent, (navList.length-1), 330))
     }
-    //eslint-disable-next-line
+    // eslint-disable-next-line
   },[])
-
   //push history state when current value changes
   React.useEffect(() => {
+    console.log(current - prev)
     history.push(navList[current].path)
     //eslint-disable-next-line
   },[current])
