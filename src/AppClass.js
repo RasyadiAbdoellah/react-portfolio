@@ -1,6 +1,6 @@
 import React from 'react'
 import { Switch, Route, withRouter } from 'react-router-dom'
-import Nav from 'components/Nav'
+import Nav from 'components/Nav/Nav'
 import { debounce } from 'lodash'
 
 //Below is the Class Component version of App. note that it uses a withRouter HOC and has a yDiff global variable to detect vertical scroll.

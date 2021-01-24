@@ -1,8 +1,9 @@
 import React from 'react'
 import { Switch, Route, useLocation, useHistory } from 'react-router-dom'
-import Nav from 'components/Nav'
 import {WheelHandler, TouchStartHandler, TouchMoveHandler} from 'Handlers'
 
+import Nav from 'components/Nav'
+import Container from 'components/Container'
 import 'App.css'
 
 function App() {
@@ -46,27 +47,24 @@ function App() {
       <Nav list={navList}/>
       <Switch>
         <Route exact path="/">
-          <section className="fullscreen" style={{backgroundColor: '#fff'}}>
+          <Container fullscreen style={{backgroundColor: '#fff'}}>
             Top
-            <div>
-              
-            </div>
-          </section>
+          </Container>
         </Route>
         <Route path="/projects">
-          <section className="fullscreen"style={{backgroundColor: '#ddd'}}>
+          <Container fullscreen style={{backgroundColor: '#ddd'}}>
             projects
-          </section>
+          </Container>
         </Route>
         <Route path="/skills">
-          <section className="fullscreen" style={{backgroundColor: '#aaa'}}>
+          <Container fullscreen style={{backgroundColor: '#aaa'}}>
             skills
-          </section>
+          </Container>
         </Route>
         <Route path="/me">
-          <section className="fullscreen" style={{backgroundColor: '#555'}}>
+          <Container fullscreen style={{backgroundColor: '#555'}}>
             about + contact
-          </section>
+          </Container>
         </Route>
       </Switch>  
     </>
