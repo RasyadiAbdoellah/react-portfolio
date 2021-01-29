@@ -50,7 +50,7 @@ function App() {
   },[])
   //push history state when current value changes
   React.useEffect(() => {
-    console.log(current - prev)
+    // console.log(current - prev)
     history.push(navList[current].path)
     //eslint-disable-next-line
   },[current])
