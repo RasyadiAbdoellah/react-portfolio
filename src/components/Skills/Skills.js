@@ -4,7 +4,7 @@ import Container from 'components/Container'
 
 export default function Skills (props) {
   return (
-    <Container fullscreen style={{backgroundColor: '#aaa'}}>
+    <Container fullscreen style={{backgroundColor: '#aaa'}} className={props.className}>
       Skills
     </Container>
   )

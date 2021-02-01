@@ -1,6 +1,7 @@
+import React from 'react'
 import { throttle, debounce } from 'lodash'
 
-export function WheelHandler (setState, limit, time) {
+export function WheelHandler (dispatch, time) {
   //this is a closure
   let yDiff = 0
   //why is it a closure? because its accessed in the function returned below and theres no way to modify it without calling the below function
@@ -11,13 +12,12 @@ export function WheelHandler (setState, limit, time) {
     if(yDiff < 0) { //might want to rework these constants. Having it trigger at a delta of -1 or 1 might be too sensitive
       yDiff = 0
       event.preventDefault()
-      setState(current => current > 0 ? current -1 : current)
+      dispatch({type: 'up'})
     }
     if(yDiff > 0) {
       yDiff = 0
       event.preventDefault()
-      setState(current => current < limit ? current + 1 : current)
-
+      dispatch({type: 'down'})
     }
   }, time, {maxWait: time})
 }
@@ -67,3 +67,11 @@ export function TouchMoveHandler (setState, limit, time){
   }, time, {maxWait: time})
 }
 
+
+export function usePrevious(value) {
+  const ref = React.useRef();
+  React.useEffect(() => {
+    ref.current = value;
+  }, [value]);
+  return ref.current;
+}

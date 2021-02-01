@@ -4,7 +4,7 @@ import Container from 'components/Container'
 
 export default function Contact (props) {
   return (
-    <Container fullscreen style={{backgroundColor: '#555'}}>
+    <Container fullscreen style={{backgroundColor: '#555'}} className={props.className}>
       Contact
     </Container>
   )
