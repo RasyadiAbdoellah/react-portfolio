@@ -1,7 +1,9 @@
 import React from 'react'
 import { Switch, Route, useHistory, useLocation } from 'react-router-dom'
-import {WheelHandler} from 'Handlers'
 import {clamp} from 'lodash'
+import {AnimatePresence} from 'framer-motion'
+
+import {WheelHandler} from 'bin'
 
 import Nav from 'components/Nav'
 import Intro from 'components/Intro'
@@ -44,39 +46,26 @@ function App() {
   const history = useHistory()
   const location = useLocation()
 
+
   //sets page to index of page path and stores direction
   const [state, dispatch] = React.useReducer(reducer ,{
     page: navList.map(e => e.path).indexOf(history.location.pathname), 
     direction : 0
   })
   
-  //sync page value with index of navList item when location changes
-  React.useLayoutEffect(() => {
-    // console.log('location effect')
-
-    //only set page if it differs from location index
-    const currentPage = navList.map(e => e.path).indexOf(location.pathname)
-    if(state.page !== currentPage){
-      // console.log('set page from location')
-      dispatch({type: 'jump', payload: currentPage})
-    }
-
-    //eslint-disable-next-line
-  }, [location])
-
   //push history state when page value changes
   React.useLayoutEffect(() => {
-    // console.log('page effect')
+    console.log('page effect')
     //only push to history if page does not match location index
     if(state.page !== navList.map(e => e.path).indexOf(location.pathname)){
-      // console.log('set history from page')
+      console.log('set history from page')
       history.push(navList[state.page].path)
     }
 
     //eslint-disable-next-line
   },[state])
 
-  //add listener after screen is set, remove on unmount
+  // //add listener after screen is set, remove on unmount
   React.useEffect(() => {
     window.addEventListener('wheel', WheelHandler(dispatch, 250), {passive: false})
     return () => {
@@ -85,25 +74,17 @@ function App() {
   },[])
 
   return (
-    <>
-      <Nav list={navList}/>
       <PageContext.Provider value={{state, dispatch}}>
-        <Switch>
-          <Route exact path="/">
-            <Intro />
-          </Route>
-          <Route path="/projects">
-            <Projects />
-          </Route>
-          <Route path="/skills">
-            <Skills />
-          </Route>
-          <Route path="/me">
-            <Contact />
-          </Route>
-        </Switch>  
+        <Nav list={navList}/>
+        <AnimatePresence custom={state.direction} exitBeforeEnter>
+          <Switch location={location} key={state.page}>
+            <Route exact path="/" component={Intro}/>
+            <Route path="/projects" component={Projects}/>
+            <Route path="/skills" component={Skills}/>
+            <Route path="/me" component={Contact}/>
+          </Switch>  
+        </AnimatePresence>
       </PageContext.Provider>
-    </>
   );
 }
 export default App;
