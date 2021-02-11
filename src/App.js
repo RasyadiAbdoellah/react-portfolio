@@ -20,39 +20,39 @@ const navList =  [
   {path: '/me', content: 'About'}
 ]
 
-function reducer(state, action) {
-  let currentPage
-  switch(action.type) {
-    case 'up' : 
-      currentPage = clamp(state.page-1, 0 , navList.length-1)
-    break
-    case 'down' :
-      currentPage = clamp(state.page+1, 0 , navList.length-1)
-    break
-    case 'jump' :
-      currentPage = action.payload
-    break
-    default :
-      currentPage = state.page
-    break
-  }
-  return {
-    page: currentPage,
-    direction: clamp(currentPage - state.page, -1, 1)
-  }
-}
-
 function App() {
   const history = useHistory()
   const location = useLocation()
-
-
   //sets page to index of page path and stores direction
-  const [state, dispatch] = React.useReducer(reducer ,{
+  const [state, dispatch] = React.useReducer((state, action) => {
+    let currentPage
+    switch(action.type) {
+      case 'up' : 
+        currentPage = clamp(state.page-1, 0 , navList.length-1)
+      break
+      case 'down' :
+        currentPage = clamp(state.page+1, 0 , navList.length-1)
+      break
+      case 'jump' :
+        currentPage = action.payload
+      break
+      default :
+        currentPage = state.page
+      break
+    }
+    return {
+      page: currentPage,
+      direction: clamp(currentPage - state.page, -1, 1)
+    }
+  }, {
     page: navList.map(e => e.path).indexOf(history.location.pathname), 
     direction : 0
   })
-  
+
+/* ----------------USEEFFECT CODE FOR CHANGING LOCATION ON SCROLL----------------------
+Code below sets wheel event listeners on mount that dispatches state change on scroll.
+Also sets a layoutEffect that updates location to match state.page
+
   //push history state when page value changes
   React.useLayoutEffect(() => {
     console.log('page effect')
@@ -63,7 +63,7 @@ function App() {
     }
 
     //eslint-disable-next-line
-  },[state])
+  },[state.page])
 
   // //add listener after screen is set, remove on unmount
   React.useEffect(() => {
@@ -72,12 +72,13 @@ function App() {
       window.removeEventListener('wheel', WheelHandler(dispatch, 250))
     }
   },[])
+---------------------------------------------------------------------------------------*/
 
   return (
       <PageContext.Provider value={{state, dispatch}}>
         <Nav list={navList}/>
-        <AnimatePresence custom={state.direction} exitBeforeEnter>
-          <Switch location={location} key={state.page}>
+        <AnimatePresence custom={state.direction} exitBeforeEnter initial={false}>
+          <Switch location={location} key={location.pathname}>
             <Route exact path="/" component={Intro}/>
             <Route path="/projects" component={Projects}/>
             <Route path="/skills" component={Skills}/>
@@ -88,8 +89,6 @@ function App() {
   );
 }
 export default App;
-
-
 
 
 
