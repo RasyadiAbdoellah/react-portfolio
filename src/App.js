@@ -15,8 +15,8 @@ import 'App.css'
 
 const navList =  [
   {path: '/', content: 'Hi!', altContent: 'Home'},
-  {path: '/projects', content: 'Projects'},
   {path: '/skills', content: 'Skills'},
+  {path: '/projects', content: 'Projects'},
   {path: '/me', content: 'About'}
 ]
 
@@ -80,8 +80,8 @@ Also sets a layoutEffect that updates location to match state.page
         <AnimatePresence custom={state.direction} exitBeforeEnter initial={false}>
           <Switch location={location} key={location.pathname}>
             <Route exact path="/" component={Intro}/>
-            <Route path="/projects" component={Projects}/>
             <Route path="/skills" component={Skills}/>
+            <Route path="/projects" component={Projects}/>
             <Route path="/me" component={Contact}/>
           </Switch>  
         </AnimatePresence>

@@ -7,15 +7,21 @@ import './Container.css'
 const variants = {
   enter: (direction) => {
     return {
-      y: direction < 0 ? -1000 : 1000,
+      y: direction < 0 ? -200 : 200,
+      opacity: 0,
+      zIndex: 0,
     };
   },
   center: {
-    y: 0
+    y: 0,
+    opacity: 1,
+    zIndex: 1,
   },
   exit: (direction) => {
     return {
-      y: direction > 0 ? -1000 : 1000,
+      y: direction > 0 ? -200 : 200,
+      opacity: 0,
+      zIndex: 0,
     };
   }
 };
@@ -32,6 +38,7 @@ export default function Container (props) {
       exit='exit'
       transition={{
         y: { type: "spring", stiffness: 200, damping: 30 },
+        opacity: {duration: 0.2}
       }}
       className={className ? className : null}
       style={style}
