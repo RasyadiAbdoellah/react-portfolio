@@ -3,7 +3,7 @@ import { Switch, Route, useHistory, useLocation } from 'react-router-dom'
 import {clamp} from 'lodash'
 import {AnimatePresence} from 'framer-motion'
 
-import {WheelHandler} from 'bin'
+// import {WheelHandler} from 'bin'
 
 import Nav from 'components/Nav'
 import Intro from 'components/Intro'
@@ -76,15 +76,31 @@ Also sets a layoutEffect that updates location to match state.page
 
   return (
       <PageContext.Provider value={{state, dispatch}}>
+
         <Nav list={navList}/>
-        <AnimatePresence custom={state.direction} exitBeforeEnter initial={false}>
+
+        <AnimatePresence custom={state.direction} exitBeforeEnter>
           <Switch location={location} key={location.pathname}>
-            <Route exact path="/" component={Intro}/>
-            <Route path="/skills" component={Skills}/>
-            <Route path="/projects" component={Projects}/>
-            <Route path="/me" component={Contact}/>
+
+            <Route exact path="/">
+              <Intro/>
+            </Route>
+
+            <Route path="/skills">
+              <Skills/>
+            </Route>
+
+            <Route path="/projects">
+              <Projects/>
+            </Route>
+
+            <Route path="/me">
+              <Contact/>
+            </Route>
+
           </Switch>  
         </AnimatePresence>
+
       </PageContext.Provider>
   );
 }

@@ -2,7 +2,6 @@ import React from 'react'
 import {motion as m} from 'framer-motion'
 
 import PageContext from 'PageContext'
-import './Container.css'
 
 const variants = {
   enter: (direction) => {
@@ -40,14 +39,10 @@ export default function Container (props) {
         y: { type: "spring", stiffness: 200, damping: 30 },
         opacity: {duration: 0.2}
       }}
-      className={className ? className : null}
+      className={`${ className ? className : ''}`}
       style={style}
     >
       {children}
-      {` this is page ${state.page} `}
-      <button onClick={() => dispatch({type: 'down'})}>
-        go to next page
-      </button>
     </m.section>
   )
 }
