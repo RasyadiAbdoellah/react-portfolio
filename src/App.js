@@ -1,7 +1,8 @@
 import React from 'react'
 import { Switch, Route, useHistory, useLocation } from 'react-router-dom'
 import {clamp} from 'lodash'
-import {AnimatePresence} from 'framer-motion'
+import {AnimatePresence, motion as m} from 'framer-motion'
+
 
 // import {WheelHandler} from 'bin'
 
@@ -14,9 +15,8 @@ import PageContext from 'PageContext'
 import 'App.css'
 
 const navList =  [
-  {path: '/', content: 'Hi!', altContent: 'Home'},
-  {path: '/skills', content: 'Skills'},
-  {path: '/projects', content: 'Projects'},
+  {path: '/', content: 'Hi!', bgColor: '#212629'},
+  {path: '/projects', content: 'Projects', bgColor:'orange'},
   {path: '/me', content: 'About'}
 ]
 
@@ -77,30 +77,31 @@ Also sets a layoutEffect that updates location to match state.page
   return (
       <PageContext.Provider value={{state, dispatch}}>
 
-        <Nav list={navList}/>
+        <m.div id="main" animate={{opacity: 1, backgroundColor: navList[state.page].bgColor}} transition={{}}>
+            <Nav list={navList}/>
+            <AnimatePresence custom={state.direction} exitBeforeEnter initial={false}>
+              <Switch location={location} key={location.pathname}>
 
-        <AnimatePresence custom={state.direction} exitBeforeEnter>
-          <Switch location={location} key={location.pathname}>
+                <Route exact path="/">
+                  <Intro/>
+                </Route>
 
-            <Route exact path="/">
-              <Intro/>
-            </Route>
+                <Route path="/skills">
+                  <Skills/>
+                </Route>
 
-            <Route path="/skills">
-              <Skills/>
-            </Route>
+                <Route path="/projects">
+                  <Projects/>
+                </Route>
 
-            <Route path="/projects">
-              <Projects/>
-            </Route>
+                <Route path="/me">
+                  <Contact/>
+                </Route>
 
-            <Route path="/me">
-              <Contact/>
-            </Route>
-
-          </Switch>  
-        </AnimatePresence>
-
+              </Switch>  
+            </AnimatePresence>
+        </m.div>
+        
       </PageContext.Provider>
   );
 }

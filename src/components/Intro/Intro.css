@@ -1,20 +1,58 @@
 .intro {
   color: #fff; 
-  margin: 0 auto; 
   width: 500px;
 }
 
-.intro>p {
-  font-family: 'Roboto Mono', monospace;
-  overflow:hidden; 
-  white-space: nowrap; 
-  width: 0%;
-  border-right: .15rem solid white;
-  animation: 
-  blink-caret .75s step-end infinite;
+.title {
+  margin-bottom: 0;
+  font-size: 2rem;
+}
+.subtitle {
+  /* font-family: 'Roboto Mono', monospace; */
+  font-weight: 300;
+  font-size: 1.5rem;
+  min-height: 1rem;
+  margin-top: .5rem;
+  margin-bottom: 1rem;
+  /* overflow:hidden;  */
+  white-space: wrap; 
+  /* width: 0%; */
+  /* border-right: .15rem solid white; */
+  /* animation: 
+  blink-caret .75s step-end infinite; */
+}
+
+.button {
+  text-decoration: none;
+  padding: 5px 15px;
+  margin-right: 10px;
+  background-color:#00a8a8;
+  color:#fff;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.button:hover {
+  color:#fff;
+  background-color:#007171;
+}
+
+.button:active {
+  color:#fff;
+  background-color:#00a8a8;
 }
 
 @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: white; }
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  .intro {
+    width: 90%;
+  }
+  .subtitle {
+    height: 3.25rem;
+    margin-bottom: 1rem;
+  }
 }

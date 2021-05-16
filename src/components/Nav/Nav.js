@@ -16,10 +16,18 @@ export default function Nav({list}) {
         if(entry.altContent){
           match ? navContent = entry.content : navContent = entry.altContent
         }
+
         return (
-          <NavLink to={entry.path} key={i+1} onClick={(e) => { dispatch({type: 'jump', payload: i})}}>{navContent}</NavLink>
+          <NavLink 
+            exact 
+            to={entry.path}
+            key={i+1} 
+            onClick={(e) => { dispatch({type: 'jump', payload: i})}}
+          >
+            {navContent}
+          </NavLink>
         )
       })}
-  </nav>
+    </nav>
   )
 }

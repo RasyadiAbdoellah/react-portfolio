@@ -6,19 +6,19 @@ import PageContext from 'PageContext'
 const variants = {
   enter: (direction) => {
     return {
-      y: direction < 0 ? -200 : 200,
+      x: direction < 0 ? -200 : 200,
       opacity: 0,
       zIndex: 0,
     };
   },
   center: {
-    y: 0,
+    x: 0,
     opacity: 1,
     zIndex: 1,
   },
   exit: (direction) => {
     return {
-      y: direction > 0 ? -200 : 200,
+      x: direction > 0 ? -200 : 200,
       opacity: 0,
       zIndex: 0,
     };
@@ -26,7 +26,7 @@ const variants = {
 };
 
 export default function Container (props) {
-  const { state, dispatch } = React.useContext(PageContext)
+  const { state } = React.useContext(PageContext)
   const {  className, children, style } = props
   return (
     <m.section
@@ -36,7 +36,7 @@ export default function Container (props) {
       animate='center'
       exit='exit'
       transition={{
-        y: { type: "spring", stiffness: 200, damping: 30 },
+        x: { type: "spring", stiffness: 200, damping: 30 },
         opacity: {duration: 0.2}
       }}
       className={`${ className ? className : ''}`}
