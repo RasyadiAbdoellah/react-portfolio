@@ -1,6 +1,5 @@
 import React from 'react'
 import Container from 'components/Container'
-import { motion as m } from 'framer-motion'
 
 import './Intro.css'
 import { Link } from 'react-router-dom'

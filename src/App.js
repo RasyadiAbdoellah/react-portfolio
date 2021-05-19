@@ -15,10 +15,12 @@ import PageContext from 'PageContext'
 import 'App.css'
 
 const navList =  [
-  {path: '/', content: 'Hi!', bgColor: '#212629'},
-  {path: '/projects', content: 'Projects', bgColor:'#1b394d'},
-  {path: '/me', content: 'About', bgColor: '#34393d'}
+  {path: '/', content: 'Hi!'},
+  {path: '/projects', content: 'Projects'},
+  {path: '/me', content: 'About'}
 ]
+
+const pageColors = ['#212629','#1b394d','#34393d']
 
 function App() {
   const history = useHistory()
@@ -77,7 +79,7 @@ Also sets a layoutEffect that updates location to match state.page
   return (
       <PageContext.Provider value={{state, dispatch}}>
 
-        <m.div id="main" animate={{opacity: 1, backgroundColor:navList[state.page].bgColor}} transition={{}}>
+        <m.div id="main" initial={{opacity: 0}} animate={{opacity: 1, backgroundColor:pageColors[state.page]}}>
             <Nav list={navList}/>
             <AnimatePresence custom={state.direction} exitBeforeEnter initial={false}>
               <Switch location={location} key={location.pathname}>
