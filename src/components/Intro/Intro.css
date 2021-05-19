@@ -18,10 +18,15 @@
   white-space: wrap; 
   /* width: 0%; */
   /* border-right: .15rem solid white; */
-  /* animation: 
-  blink-caret .75s step-end infinite; */
+
 }
 
+.cursor {
+  color: #E84D4D;
+  font-weight: 600;
+  animation: 
+    blink .75s step-end infinite;
+}
 .button {
   text-decoration: none;
   padding: 5px 15px;
@@ -42,9 +47,9 @@
   background-color:#00a8a8;
 }
 
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: white; }
+@keyframes blink {
+  from, to { opacity: 0 }
+  50% { opacity: 1; }
 }
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {

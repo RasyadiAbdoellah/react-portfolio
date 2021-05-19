@@ -9,25 +9,25 @@ export default function Nav({list}) {
   const { pathname } = useLocation()
   return (
     <nav className="fixed-nav">
-      {list.map((entry, i) => {
-        const match = pathname === entry.path
-        let navContent = entry.content
+        {list.map((entry, i) => {
+          const match = pathname === entry.path
+          let navContent = entry.content
 
-        if(entry.altContent){
-          match ? navContent = entry.content : navContent = entry.altContent
-        }
+          if(entry.altContent){
+            match ? navContent = entry.content : navContent = entry.altContent
+          }
 
-        return (
-          <NavLink 
-            exact 
-            to={entry.path}
-            key={i+1} 
-            onClick={(e) => { dispatch({type: 'jump', payload: i})}}
-          >
-            {navContent}
-          </NavLink>
-        )
-      })}
+          return (
+            <NavLink 
+              exact 
+              to={entry.path}
+              key={i+1} 
+              onClick={(e) => { dispatch({type: 'jump', payload: i})}}
+            >
+              <span>{navContent}</span>
+            </NavLink>
+          )
+        })}
     </nav>
   )
 }

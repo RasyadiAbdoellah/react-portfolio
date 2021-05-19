@@ -15,7 +15,9 @@
   width: 100px
 }
 
-.fixed-nav>a.active{
+.fixed-nav>a.active>span{
+  border-bottom: 3px solid #E84D4D;
   color: #fff;
   font-weight: bold;
+  transition: font-weight 0.2s ease, border-bottom 0.5s ease;
 }

@@ -25,7 +25,6 @@ export default function Intro() {
       setTimeout(updateTypedText, 50)
     }
   })
-  
 
   const { dispatch } = React.useContext(PageContext)
 
@@ -35,7 +34,7 @@ export default function Intro() {
         Hi there! I'm Ras
       </h1>
         <p className='subtitle'>
-          {typedText}
+          {typedText}<span className="cursor">|</span>
         </p>
       {/* <m.p animate={{width: 'fit-content'}} transition={{delay: .75, duration: 1.25, ease:'linear'}}>
         Fullstack Web Developer & UI/UX Designer
