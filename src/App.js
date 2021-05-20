@@ -22,6 +22,25 @@ const navList =  [
 
 const pageColors = ['#212629','#1b394d','#34393d']
 
+const mainAnim = {
+  enter: {
+    opacity: 0,
+  },
+  center: i => ({
+    opacity: 1,
+    backgroundColor:pageColors[i],
+    transition: {
+      when: 'beforeChildren'
+    }
+  }),
+  exit: {
+    transition: {
+      when: 'afterChildren',
+      delayChildren: 0.05
+    }
+  }
+}
+
 function App() {
   const history = useHistory()
   const location = useLocation()
@@ -79,7 +98,7 @@ Also sets a layoutEffect that updates location to match state.page
   return (
       <PageContext.Provider value={{state, dispatch}}>
 
-        <m.div id="main" initial={{opacity: 0}} animate={{opacity: 1, backgroundColor:pageColors[state.page]}}>
+        <m.div id="main" custom={state.page} initial='enter' animate='center' exit='exit' variants={mainAnim}>
             <Nav list={navList}/>
             <AnimatePresence custom={state.direction} exitBeforeEnter initial={false}>
               <Switch location={location} key={location.pathname}>

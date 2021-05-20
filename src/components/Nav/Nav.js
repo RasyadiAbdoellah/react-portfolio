@@ -8,7 +8,7 @@ import './Nav.css'
 
 const textVariants = {
   active: {fontWeight:'bold', color:'#fff'},
-  inactive: {fontWeight:'400', color:'#696969'}
+  inactive: {fontWeight:'normal', color:'#696969'}
 }
 
 const underlineSpring = {
@@ -39,7 +39,7 @@ export default function Nav({list}) {
                 key={i+1} 
                 onClick={(e) => { dispatch({type: 'jump', payload: i})}}
               >
-                <m.span animate={match ? 'active' : 'inactive' } variants={textVariants}>{navContent}</m.span>
+                <m.span animate={match ? 'active' : 'inactive' } style={{fontWeight:'normal'}} variants={textVariants}>{navContent}</m.span>
                 {match && <m.hr layoutId='outline' className='underline' transition={underlineSpring}/>}
               </Link>
           )
