@@ -2,18 +2,51 @@ import React from 'react'
 import {motion as m} from 'framer-motion'
 
 import PageContext from 'PageContext'
-import './Container.css'
+
+const containerAnim = {
+  enter: (direction) => ({
+    x: direction < 0 ? -200 : 200,
+    opacity: 0,
+    zIndex: 0,
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+    zIndex: 1,
+    transition: {
+      when: 'beforeChildren',
+      staggerChildren: 0.07
+    }
+  },
+  exit: (direction) => ({
+    x: direction > 0 ? -200 : 200,
+    opacity: 0,
+    zIndex: 0,
+    transition: {
+      when: 'afterChildren',
+      staggerChildren: 0.07,
+      staggerDirection: -1,
+      opacity: {duration: 0.2}
+    }
+  })
+};
 
 export default function Container (props) {
-  const { state, dispatch } = React.useContext(PageContext)
-  const { fullscreen, className, children, style } = props
+  const { state } = React.useContext(PageContext)
+  const {  className, children } = props
   return (
-    <m.section className={`${(fullscreen ? 'fullscreen' : '')} ${className ? className : ''}`} style={style}>
+    <m.section
+      custom={state.direction}
+      variants={containerAnim}
+      initial='enter'
+      animate='center'
+      exit='exit'
+      transition={{
+        x: { type: "spring", stiffness: 500, damping: 25 }
+      }}
+      className={`${ className ? className : ''}`}
+    >
       {children}
-      {` this is page ${state.page} `}
-      <button onClick={() => dispatch({type: 'down'})}>
-        go to next page
-      </button>
     </m.section>
   )
 }

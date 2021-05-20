@@ -1,24 +1,50 @@
 import React from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
+import {motion as m, AnimateSharedLayout} from 'framer-motion'
+
+import PageContext from 'PageContext'
+
 import './Nav.css'
 
+const textVariants = {
+  active: {fontWeight:'bold', color:'#fff'},
+  inactive: {fontWeight:'normal', color:'#696969'}
+}
+
+const underlineSpring = {
+  type: "spring",
+  stiffness: 500,
+  damping: 30
+};
+
+
 export default function Nav({list}) {
-  let { pathname } = useLocation()
+  const { dispatch } = React.useContext(PageContext)
+  const { pathname } = useLocation()
   return (
     <nav className="fixed-nav">
-      {list.map((entry, i) => {
-        let navContent = entry.content
+      <AnimateSharedLayout>
+        {list.map((entry, i) => {
+          const match = pathname === entry.path
+          let navContent = entry.content
 
-        if(entry.altContent){
-          pathname === entry.path ? navContent = entry.content : navContent = entry.altContent
-        }
+          if(entry.altContent){
+            match ? navContent = entry.content : navContent = entry.altContent
+          }
 
-        return (
-          <NavLink exact to={entry.path} key={i+1}>
-            {navContent}
-          </NavLink>
-        )
-      })}
-  </nav>
+          return (
+            <Link 
+                exact 
+                to={entry.path}
+                key={i+1} 
+                onClick={(e) => { dispatch({type: 'jump', payload: i})}}
+              >
+                <m.span animate={match ? 'active' : 'inactive' } style={{fontWeight:'normal'}} variants={textVariants}>{navContent}</m.span>
+                {match && <m.hr layoutId='outline' className='underline' transition={underlineSpring}/>}
+              </Link>
+          )
+        })}
+      </AnimateSharedLayout>
+    </nav>
   )
 }

@@ -1,7 +1,20 @@
 .fixed-nav {
   position: fixed;
-  left: 5px;
-  top: 33%;
+  top:0;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  width:100vw;
+  z-index: 1000;
+}
+.fixed-nav a{
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 0;
+  width: 100px;
+}
+
+.underline {
+  width: 75%;
+  border-bottom: 3px solid #E84D4D;
 }

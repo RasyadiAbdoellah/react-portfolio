@@ -1,7 +1,10 @@
 import React from 'react'
 import { Switch, Route, useHistory, useLocation } from 'react-router-dom'
-import {WheelHandler} from 'Handlers'
 import {clamp} from 'lodash'
+import {AnimatePresence, motion as m} from 'framer-motion'
+
+
+// import {WheelHandler} from 'bin'
 
 import Nav from 'components/Nav'
 import Intro from 'components/Intro'
@@ -12,103 +15,118 @@ import PageContext from 'PageContext'
 import 'App.css'
 
 const navList =  [
-  {path: '/', content: 'Hi!', altContent: 'Home'},
+  {path: '/', content: 'Hi!'},
   {path: '/projects', content: 'Projects'},
-  {path: '/skills', content: 'Skills'},
   {path: '/me', content: 'About'}
 ]
 
-function reducer(state, action) {
-  let currentPage
-  switch(action.type) {
-    case 'up' : 
-      currentPage = clamp(state.page-1, 0 , navList.length-1)
-    break
-    case 'down' :
-      currentPage = clamp(state.page+1, 0 , navList.length-1)
-    break
-    case 'jump' :
-      currentPage = action.payload
-    break
-    default :
-      currentPage = state.page
-    break
-  }
-  return {
-    page: currentPage,
-    direction: clamp(currentPage - state.page, -1, 1)
+const pageColors = ['#212629','#1b394d','#34393d']
+
+const mainAnim = {
+  enter: {
+    opacity: 0,
+  },
+  center: i => ({
+    opacity: 1,
+    backgroundColor:pageColors[i],
+    transition: {
+      when: 'beforeChildren'
+    }
+  }),
+  exit: {
+    transition: {
+      when: 'afterChildren',
+      delayChildren: 0.05
+    }
   }
 }
 
 function App() {
   const history = useHistory()
   const location = useLocation()
-
   //sets page to index of page path and stores direction
-  const [state, dispatch] = React.useReducer(reducer ,{
+  const [state, dispatch] = React.useReducer((state, action) => {
+    let currentPage
+    switch(action.type) {
+      case 'up' : 
+        currentPage = clamp(state.page-1, 0 , navList.length-1)
+      break
+      case 'down' :
+        currentPage = clamp(state.page+1, 0 , navList.length-1)
+      break
+      case 'jump' :
+        currentPage = action.payload
+      break
+      default :
+        currentPage = state.page
+      break
+    }
+    return {
+      page: currentPage,
+      direction: clamp(currentPage - state.page, -1, 1)
+    }
+  }, {
     page: navList.map(e => e.path).indexOf(history.location.pathname), 
     direction : 0
   })
-  
-  //sync page value with index of navList item when location changes
-  React.useLayoutEffect(() => {
-    // console.log('location effect')
 
-    //only set page if it differs from location index
-    const currentPage = navList.map(e => e.path).indexOf(location.pathname)
-    if(state.page !== currentPage){
-      // console.log('set page from location')
-      dispatch({type: 'jump', payload: currentPage})
-    }
-
-    //eslint-disable-next-line
-  }, [location])
+/* ----------------USEEFFECT CODE FOR CHANGING LOCATION ON SCROLL----------------------
+Code below sets wheel event listeners on mount that dispatches state change on scroll.
+Also sets a layoutEffect that updates location to match state.page
 
   //push history state when page value changes
   React.useLayoutEffect(() => {
-    // console.log('page effect')
+    console.log('page effect')
     //only push to history if page does not match location index
     if(state.page !== navList.map(e => e.path).indexOf(location.pathname)){
-      // console.log('set history from page')
+      console.log('set history from page')
       history.push(navList[state.page].path)
     }
 
     //eslint-disable-next-line
-  },[state])
+  },[state.page])
 
-  //add listener after screen is set, remove on unmount
+  // //add listener after screen is set, remove on unmount
   React.useEffect(() => {
     window.addEventListener('wheel', WheelHandler(dispatch, 250), {passive: false})
     return () => {
       window.removeEventListener('wheel', WheelHandler(dispatch, 250))
     }
   },[])
+---------------------------------------------------------------------------------------*/
 
   return (
-    <>
-      <Nav list={navList}/>
       <PageContext.Provider value={{state, dispatch}}>
-        <Switch>
-          <Route exact path="/">
-            <Intro />
-          </Route>
-          <Route path="/projects">
-            <Projects />
-          </Route>
-          <Route path="/skills">
-            <Skills />
-          </Route>
-          <Route path="/me">
-            <Contact />
-          </Route>
-        </Switch>  
+
+        <m.div id="main" custom={state.page} initial='enter' animate='center' exit='exit' variants={mainAnim}>
+            <Nav list={navList}/>
+            <AnimatePresence custom={state.direction} exitBeforeEnter initial={false}>
+              <Switch location={location} key={location.pathname}>
+
+                <Route exact path="/">
+                  <Intro/>
+                </Route>
+
+                <Route path="/skills">
+                  <Skills/>
+                </Route>
+
+                <Route path="/projects">
+                  <Projects/>
+                </Route>
+
+                <Route path="/me">
+                  <Contact/>
+                </Route>
+
+              </Switch>  
+            </AnimatePresence>
+        </m.div>
+        
       </PageContext.Provider>
-    </>
   );
 }
 export default App;
-
-
 
 
 
