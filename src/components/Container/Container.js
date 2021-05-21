@@ -14,7 +14,7 @@ const containerAnim = {
     opacity: 1,
     zIndex: 1,
     transition: {
-      when: 'beforeChildren',
+      delayChildren: .3,
       staggerChildren: 0.07
     }
   },

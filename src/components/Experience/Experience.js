@@ -39,7 +39,7 @@ export default function Projects (props) {
   }, [])
   
   return (
-    contentList && <Container className="projects">
+    contentList && <Container className="experience">
       <h1>What I've Worked on</h1>
         {contentList.map((content, i) => {
           return (

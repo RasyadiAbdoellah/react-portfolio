@@ -6,7 +6,7 @@ small {
   letter-spacing: .1rem;
 }
 .intro {
-  color: #fff; 
+  color: white; 
   width: 500px;
 }
 .title {
@@ -23,17 +23,18 @@ small {
   white-space: wrap; 
 }
 .cursor {
-  color: #E84D4D;
+  color: var(--red);
   font-weight: 600;
   animation: 
     blink .75s step-end infinite;
 }
 .blurb {
-  color: #909394;
+  color: var(--light-gray);
   margin: 0;
   margin-bottom: 2rem;
   font-size: 1.2rem;
   line-height: 1.6rem;
+  text-align: left;
 }
 strong {
   font-weight: 700;
@@ -41,22 +42,23 @@ strong {
 .inline-link {
   font-weight: 600;
   color: white;
-  text-decoration: underline 2px solid #00a8a8;
+  text-decoration: underline 2px solid var(--cyan);
 }
 .button {
   text-decoration: none;
   font-size: 1.2rem;
   padding: 25px 40px;
+  width: 150px;
   margin-right: 10px;
-  color:#fff;
-  border:2px solid #00a8a8;
+  color: white;
+  border:2px solid var(--cyan);
   border-radius: 5px;
   display: inline-block;
 }
 
 .button:active {
-  color:#fff;
-  background-color:#00a8a8;
+  color: white;
+  background-color: var(--cyan);
 }
 
 @keyframes blink {

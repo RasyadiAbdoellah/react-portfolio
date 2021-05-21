@@ -99,28 +99,24 @@ React.useEffect(() => {
       <PageContext.Provider value={{state, dispatch}}>
 
         <m.div id="main" custom={state.page} initial='enter' animate='center' exit='exit' variants={mainAnim}>
-            <Nav list={navList}/>
-            <AnimatePresence custom={state.direction} exitBeforeEnter initial={false}>
-              <Switch location={location} key={location.pathname}>
+          <Nav list={navList} colors={pageColors}/>
+          <AnimatePresence exitBeforeEnter initial={false}>
+            <Switch location={location} key={location.pathname}>
 
-                <Route exact path="/">
-                  <Intro/>
-                </Route>
+              <Route exact path="/">
+                <Intro />
+              </Route>
 
-                <Route path="/skills">
-                  <Skills/>
-                </Route>
+              <Route path="/experience">
+                <Experience/>
+              </Route>
 
-                <Route path="/experience">
-                  <Experience/>
-                </Route>
+              <Route path="/me">
+                <Contact/>
+              </Route>
 
-                <Route path="/me">
-                  <Contact/>
-                </Route>
-
-              </Switch>  
-            </AnimatePresence>
+            </Switch>  
+          </AnimatePresence>
         </m.div>
         
       </PageContext.Provider>

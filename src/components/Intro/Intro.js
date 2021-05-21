@@ -44,7 +44,7 @@ export default function Intro() {
       {/* <m.p animate={{width: 'fit-content'}} transition={{delay: .75, duration: 1.25, ease:'linear'}}>
         Fullstack Web Developer & UI/UX Designer
       </m.p> */}
-      <m.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{ opacity: {duration: 0.5, delay: 1.75}}} >
+      <m.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{ opacity: {duration: 0.5, delay: 1.75}}} style={{textAlign: 'center'}}>
         {/* onClick handler below sets animation direction. payload is the page index in navList. i.e linking to /me is 3rd in navList array so index = 2 */}
         <p className="blurb">
           Designer turned developer with a love for building thoughtful, intuitive experiences. I'm a <strong style={{color:"#fff"}}>Frontend Developer</strong> with <strong style={{color:"#fff"}}>Jenius</strong>, building and managing web-based applications, particularly <AnimLink href="https://www.jenius.com" target="_blank">Jenius.com</AnimLink> and <AnimLink href="https://www.cocreate.id" target="_blank">CoCreate.id</AnimLink>.
