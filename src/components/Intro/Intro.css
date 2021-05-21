@@ -1,41 +1,57 @@
+* {
+  font-weight: 300;
+}
+small {
+  font-size: 1rem;
+  letter-spacing: .1rem;
+}
 .intro {
   color: #fff; 
   width: 500px;
 }
-
 .title {
-  margin-bottom: 0;
-  font-size: 2rem;
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 600;
 }
 .subtitle {
   /* font-family: 'Roboto Mono', monospace; */
-  font-weight: 300;
-  font-size: 1.5rem;
+  font-size: 2rem;
   min-height: 1rem;
   margin-top: .5rem;
   margin-bottom: 1rem;
   white-space: wrap; 
 }
-
 .cursor {
   color: #E84D4D;
   font-weight: 600;
   animation: 
     blink .75s step-end infinite;
 }
+.blurb {
+  color: #909394;
+  margin: 0;
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+}
+strong {
+  font-weight: 700;
+}
+.inline-link {
+  font-weight: 600;
+  color: white;
+  text-decoration: underline 2px solid #00a8a8;
+}
 .button {
   text-decoration: none;
-  padding: 5px 15px;
+  font-size: 1.2rem;
+  padding: 25px 40px;
   margin-right: 10px;
-  background-color:#00a8a8;
   color:#fff;
+  border:2px solid #00a8a8;
   border-radius: 5px;
   display: inline-block;
-}
-
-.button:hover {
-  color:#fff;
-  background-color:#007171;
 }
 
 .button:active {
@@ -52,8 +68,14 @@
   .intro {
     width: 90%;
   }
+  .title {
+    font-size: 2rem;
+  }
   .subtitle {
-    height: 3.25rem;
+    font-size: 1.3rem;
     margin-bottom: 1rem;
+  }
+  .blurb {
+    font-size: 1rem;
   }
 }

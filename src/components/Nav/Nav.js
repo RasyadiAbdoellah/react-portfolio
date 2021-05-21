@@ -8,7 +8,7 @@ import './Nav.css'
 
 const textVariants = {
   active: {fontWeight:'bold', color:'#fff'},
-  inactive: {fontWeight:'normal', color:'#696969'}
+  inactive: {fontWeight:'normal', color:'#fff'}
 }
 
 const underlineSpring = {

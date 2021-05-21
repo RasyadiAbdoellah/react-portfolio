@@ -1,0 +1,22 @@
+.projects {
+  color: white;
+  align-self: stretch;
+  margin-top: 4rem;
+}
+
+.card {
+  color: white;
+  max-width: 600px;
+  padding: 20px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.card * {
+  text-decoration: none;
+}
+
+.card a {
+  text-decoration: underline;
+  
+}

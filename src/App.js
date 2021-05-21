@@ -8,7 +8,7 @@ import {AnimatePresence, motion as m} from 'framer-motion'
 
 import Nav from 'components/Nav'
 import Intro from 'components/Intro'
-import Projects from 'components/Projects'
+import Experience from 'components/Experience'
 import Skills from 'components/Skills'
 import Contact from 'components/Contact'
 import PageContext from 'PageContext'
@@ -16,7 +16,7 @@ import 'App.css'
 
 const navList =  [
   {path: '/', content: 'Hi!'},
-  {path: '/projects', content: 'Projects'},
+  {path: '/experience', content: 'Experience'},
   {path: '/me', content: 'About'}
 ]
 
@@ -74,25 +74,25 @@ function App() {
 Code below sets wheel event listeners on mount that dispatches state change on scroll.
 Also sets a layoutEffect that updates location to match state.page
 
-  //push history state when page value changes
-  React.useLayoutEffect(() => {
-    console.log('page effect')
-    //only push to history if page does not match location index
-    if(state.page !== navList.map(e => e.path).indexOf(location.pathname)){
-      console.log('set history from page')
-      history.push(navList[state.page].path)
-    }
+//push history state when page value changes
+React.useLayoutEffect(() => {
+  console.log('page effect')
+  //only push to history if page does not match location index
+  if(state.page !== navList.map(e => e.path).indexOf(location.pathname)){
+    console.log('set history from page')
+    history.push(navList[state.page].path)
+  }
+  
+  //eslint-disable-next-line
+},[state.page])
 
-    //eslint-disable-next-line
-  },[state.page])
-
-  // //add listener after screen is set, remove on unmount
-  React.useEffect(() => {
-    window.addEventListener('wheel', WheelHandler(dispatch, 250), {passive: false})
-    return () => {
-      window.removeEventListener('wheel', WheelHandler(dispatch, 250))
-    }
-  },[])
+// //add listener after screen is set, remove on unmount
+React.useEffect(() => {
+  window.addEventListener('wheel', WheelHandler(dispatch, 250), {passive: false})
+  return () => {
+    window.removeEventListener('wheel', WheelHandler(dispatch, 250))
+  }
+},[])
 ---------------------------------------------------------------------------------------*/
 
   return (
@@ -111,8 +111,8 @@ Also sets a layoutEffect that updates location to match state.page
                   <Skills/>
                 </Route>
 
-                <Route path="/projects">
-                  <Projects/>
+                <Route path="/experience">
+                  <Experience/>
                 </Route>
 
                 <Route path="/me">

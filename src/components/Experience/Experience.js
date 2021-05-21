@@ -1,9 +1,9 @@
 import React from 'react'
 import {motion as m, AnimateSharedLayout} from 'framer-motion'
-import ReactMarkdown from 'react-markdown'
+import {default as Markdown, compiler} from 'markdown-to-jsx'
 
 import Container from 'components/Container'
-import './Projects.css'
+import './Experience.css'
 
 const importAll = (r) => r.keys().map(r)
 const mdFiles = importAll(require.context('md/', false, /\.md$/))
@@ -40,10 +40,11 @@ export default function Projects (props) {
   
   return (
     contentList && <Container className="projects">
+      <h1>What I've Worked on</h1>
         {contentList.map((content, i) => {
           return (
             <m.div key={i} variants={cardAnim} className="card">
-              <ReactMarkdown children={content}/>
+              <Markdown>{content}</Markdown>
             </m.div>
           )
         })}
