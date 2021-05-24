@@ -2,15 +2,10 @@
   position: fixed;
   top: 0;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   width:100vw;
-  padding: 0 20px;
   z-index: 1000;
   /* box-shadow: 0 2px 5px rgba(0, 0, 0, .2); */
-}
-.inner {
-  display: flex;
-  justify-content: space-around;
 }
 .fixed-nav a {
   width: 120px;
@@ -20,7 +15,15 @@
   padding-top: 20px;
   flex: 1;
 }
-
+.inner {
+  display: flex;
+  width: 80vw;
+  justify-content: space-between;
+  align-items: stretch;
+}
+.wrapper {
+  display: flex;
+}
 .underline {
   margin: 0 auto;
   margin-top: 10px;

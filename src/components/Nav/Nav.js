@@ -8,7 +8,7 @@ import './Nav.css'
 
 const textVariants = {
   active: {fontWeight:'600', color:'#fff'},
-  inactive: {fontWeight:'300', color:'#fff'}
+  inactive: {fontWeight:'300', color:'#909394'}
 }
 
 const underlineSpring = {
@@ -39,29 +39,32 @@ export default function Nav({list, colors}) {
     transition={{delay:.1}}
     >
       <div className="inner">
-        <AnimateSharedLayout>
-          {list.map((entry, i) => {
-            const match = pathname === entry.path
-            let navContent = entry.content
+        <div className="logo" style={{color:'white'}}>logo</div>
+        <div className="wrapper">
+          <AnimateSharedLayout>
+            {list.map((entry, i) => {
+              const match = pathname === entry.path
+              let navContent = entry.content
 
-            if(entry.altContent){
-              match ? navContent = entry.content : navContent = entry.altContent
-            }
-            return (
-              <Link 
-                  exact 
-                  to={entry.path}
-                  key={i+1} 
-                  onClick={(e) => {
-                    dispatch({type: 'jump', payload: i})
-                  }}
-                >
-                  <m.span animate={match ? 'active' : 'inactive'} variants={textVariants}>{navContent}</m.span>
-                  {match && <m.hr layoutId='outline' className='underline' transition={underlineSpring}/>}
-                </Link>
-            )
-          })}
-        </AnimateSharedLayout>
+              if(entry.altContent){
+                match ? navContent = entry.content : navContent = entry.altContent
+              }
+              return (
+                <Link 
+                    exact 
+                    to={entry.path}
+                    key={i+1} 
+                    onClick={(e) => {
+                      dispatch({type: 'jump', payload: i})
+                    }}
+                  >
+                    <m.span animate={match ? 'active' : 'inactive'} variants={textVariants}>{navContent}</m.span>
+                    {match && <m.hr layoutId='outline' className='underline' transition={underlineSpring}/>}
+                  </Link>
+              )
+            })}
+          </AnimateSharedLayout>
+        </div>
       </div>
     </m.nav>
   )
