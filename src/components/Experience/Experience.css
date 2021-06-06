@@ -1,13 +1,30 @@
 .experience {
   color: white;
   align-self: stretch;
+  margin-top: 3rem;
 }
 
 .card {
-  color: white;
-  max-width: 600px;
-  margin-bottom: 10px;
-  border-radius: 10px;
+  max-width: 900px;
+  margin-bottom: 2rem;
+}
+
+.card-heading {
+  margin-bottom: 1rem;
+}
+
+.card-heading * {
+  margin: 0;
+}
+
+.card-content {
+  margin-top: 0;
+}
+
+.work-period {
+  width: fit-content;
+  margin-top: .5rem;
+  margin-right: 1rem;
 }
 
 .card * {

@@ -1,5 +1,5 @@
 import React from 'react'
-import {motion as m, AnimateSharedLayout} from 'framer-motion'
+import {motion as m} from 'framer-motion'
 import {default as Markdown, compiler} from 'markdown-to-jsx'
 
 import Container from 'components/Container'
@@ -21,7 +21,7 @@ const cardAnim = {
     opacity: 0,
     y: 50,
     transition: {
-      opacity: { duration: 0.2}
+      opacity: { duration: 0.5}
     }
   },
 }
@@ -40,7 +40,37 @@ export default function Projects (props) {
   
   return (
     contentList && <Container className="experience">
-      <h1>What I've Worked on</h1>
+      <h1>Where I've Been</h1>
+      <m.div className="card" variants={cardAnim}>
+        <div className="card-heading">
+          <p>2019 - Present</p>
+          <h2>Digital Banking Solutions Developer @ <strong>Bank BTPN, Jenius</strong></h2>
+        </div>
+        <p className="card-content">
+          Blurb about what I've been doing at Bank BTPN, Jenius
+        </p>
+      </m.div>
+
+      <m.div className="card" variants={cardAnim}>
+        <div className="card-heading">
+          <p>2016 - 2019</p>
+          <h2>Co-founder, Lead Designer, & Frontend Developer @ <strong>Deframe</strong></h2>
+        </div>
+        <p className="card-content">
+          Blurb about what I've been doing at Bank BTPN, Jenius
+        </p>
+      </m.div>
+
+      <m.div className="card" variants={cardAnim}>
+        <div className="card-heading">
+          <p>2013 - 2015</p>
+          <h2>Multimedia Specialist @ <strong>Shopdeca.com</strong></h2>
+        </div>
+        <p className="card-content">
+          Blurb about what I've been doing at Shopdeca
+        </p>
+      </m.div>
+
         {contentList.map((content, i) => {
           return (
             <m.div key={i} variants={cardAnim} className="card">
