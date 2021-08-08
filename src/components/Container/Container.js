@@ -6,22 +6,28 @@ import PageContext from 'PageContext'
 import './Container.css'
 
 const containerAnim = {
-  enter: () => ({
-    x: -200,
+  enter: {
+    x: -300,
     opacity: 0,
     zIndex: 0,
-  }),
+  },
   center: {
     x: 0,
     opacity: 1,
     zIndex: 1,
     transition: {
-      delayChildren: .3,
-      staggerChildren: 0.07
+      x: { 
+        type: "spring",
+        stiffness: 500,
+        damping: 75,
+        mass: 5
+      },
+      delayChildren: .5,
+      staggerChildren: 0.1
     }
   },
-  exit: () => ({
-    x:200,
+  exit: {
+    x:300,
     opacity: 0,
     zIndex: 0,
     transition: {
@@ -30,7 +36,7 @@ const containerAnim = {
       staggerDirection: -1,
       opacity: {duration: 0.2}
     }
-  })
+  }
 };
 
 export default function Container (props) {
@@ -44,9 +50,6 @@ export default function Container (props) {
       initial='enter'
       animate='center'
       exit='exit'
-      transition={{
-        x: { type: "spring", stiffness: 500, damping: 25 }
-      }}
       className={`${ className ? className : ''}`}
     >
       {children}

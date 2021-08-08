@@ -19,27 +19,6 @@ const navList =  [
   {path: '#me', content: 'Contact'}
 ]
 
-const pageColors = ['#212629','#1b394d','#34393d']
-
-const mainAnim = {
-  enter: {
-    opacity: 0,
-  },
-  center: i => ({
-    opacity: 1,
-    backgroundColor:pageColors[i],
-    transition: {
-      when: 'beforeChildren'
-    }
-  }),
-  exit: {
-    transition: {
-      when: 'afterChildren',
-      delayChildren: 0.05
-    }
-  }
-}
-
 function App() {
   const history = useHistory()
   const location = useLocation()
@@ -69,43 +48,12 @@ function App() {
     direction : 0
   })
 
-/* ----------------USEEFFECT CODE FOR CHANGING LOCATION ON SCROLL----------------------
-Code below sets wheel event listeners on mount that dispatches state change on scroll.
-Also sets a layoutEffect that updates location to match state.page
-
-//push history state when page value changes
-React.useLayoutEffect(() => {
-  console.log('page effect')
-  //only push to history if page does not match location index
-  if(state.page !== navList.map(e => e.path).indexOf(location.pathname)){
-    console.log('set history from page')
-    history.push(navList[state.page].path)
-  }
-  
-  //eslint-disable-next-line
-},[state.page])
-
-// //add listener after screen is set, remove on unmount
-React.useEffect(() => {
-  window.addEventListener('wheel', WheelHandler(dispatch, 250), {passive: false})
-  return () => {
-    window.removeEventListener('wheel', WheelHandler(dispatch, 250))
-  }
-},[])
----------------------------------------------------------------------------------------*/
-
   return (
       <PageContext.Provider value={{state, dispatch}}>
-
-        <m.div id="main" custom={state.page} initial='enter' animate='center' exit='exit' variants={mainAnim}>
-          <Nav list={navList} colors={pageColors}/>
-          <AnimatePresence exitBeforeEnter initial={true}>
-            <Intro key="top"/>
-            <Experience key="experience"/>
-            <Contact key="contact"/>
-          </AnimatePresence>
-        </m.div>
-        
+          <Nav list={navList}/>
+          <Intro/>
+          <Experience/>
+          <Contact/>
       </PageContext.Provider>
   );
 }
