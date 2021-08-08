@@ -5,6 +5,7 @@
   justify-content: center;
   width:100vw;
   z-index: 1000;
+  background-color: #00000000;
   /* box-shadow: 0 2px 5px rgba(0, 0, 0, .2); */
 }
 .fixed-nav a {

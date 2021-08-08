@@ -3,9 +3,11 @@ import {motion as m} from 'framer-motion'
 
 import PageContext from 'PageContext'
 
+import './Container.css'
+
 const containerAnim = {
-  enter: (direction) => ({
-    x: direction < 0 ? -200 : 200,
+  enter: () => ({
+    x: -200,
     opacity: 0,
     zIndex: 0,
   }),
@@ -18,8 +20,8 @@ const containerAnim = {
       staggerChildren: 0.07
     }
   },
-  exit: (direction) => ({
-    x: direction > 0 ? -200 : 200,
+  exit: () => ({
+    x:200,
     opacity: 0,
     zIndex: 0,
     transition: {
@@ -33,9 +35,10 @@ const containerAnim = {
 
 export default function Container (props) {
   const { state } = React.useContext(PageContext)
-  const {  className, children } = props
+  const {  className, children, id } = props
   return (
     <m.section
+      id={id}
       custom={state.direction}
       variants={containerAnim}
       initial='enter'

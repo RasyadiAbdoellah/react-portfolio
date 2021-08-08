@@ -14,9 +14,9 @@ import PageContext from 'PageContext'
 import 'App.css'
 
 const navList =  [
-  {path: '/', content: 'Hi!'},
-  {path: '/experience', content: 'Experience'},
-  {path: '/me', content: 'About'}
+  {path: '#top', content: 'Hi!'},
+  {path: '#experience', content: 'Experience'},
+  {path: '#me', content: 'Contact'}
 ]
 
 const pageColors = ['#212629','#1b394d','#34393d']
@@ -99,22 +99,10 @@ React.useEffect(() => {
 
         <m.div id="main" custom={state.page} initial='enter' animate='center' exit='exit' variants={mainAnim}>
           <Nav list={navList} colors={pageColors}/>
-          <AnimatePresence exitBeforeEnter initial={false}>
-            <Switch location={location} key={location.pathname}>
-
-              <Route exact path="/">
-                <Intro />
-              </Route>
-
-              <Route path="/experience">
-                <Experience/>
-              </Route>
-
-              <Route path="/me">
-                <Contact/>
-              </Route>
-
-            </Switch>  
+          <AnimatePresence exitBeforeEnter initial={true}>
+            <Intro key="top"/>
+            <Experience key="experience"/>
+            <Contact key="contact"/>
           </AnimatePresence>
         </m.div>
         
