@@ -11,15 +11,15 @@ const mdFiles = importAll(require.context('md/', false, /\.md$/))
 const cardAnim = {
   enter: {
     opacity: 0,
-    y: 50
+    x: -50
   },
   center: {
     opacity: 1,
-    y: 0,
+    x: 0,
   },
   exit: {
     opacity: 0,
-    y: 50,
+    x: -50,
     transition: {
       opacity: { duration: 0.5}
     }

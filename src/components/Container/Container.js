@@ -1,5 +1,7 @@
 import React from 'react'
-import {motion as m} from 'framer-motion'
+import {motion as m, useAnimation} from 'framer-motion'
+import {useInView} from 'react-intersection-observer'
+import { useHistory } from 'react-router-dom'
 
 import PageContext from 'PageContext'
 
@@ -41,18 +43,35 @@ const containerAnim = {
 
 export default function Container (props) {
   const { state } = React.useContext(PageContext)
+  const controls = useAnimation()
+  const history = useHistory()
+  const [ ref, inView ] = useInView({
+    threshold: 0.2
+  })
+
   const {  className, children, id } = props
+  
+  React.useEffect(() => {
+    if(inView) {
+      controls.start('center')
+      history.push(`/#${id}`)
+    }
+  }, [controls, inView, history, id])
+
   return (
-    <m.section
-      id={id}
-      custom={state.direction}
-      variants={containerAnim}
-      initial='enter'
-      animate='center'
-      exit='exit'
-      className={`${ className ? className : ''}`}
-    >
-      {children}
-    </m.section>
+    <>
+      <m.section
+        id={id}
+        ref={ref}
+        custom={state.direction}
+        variants={containerAnim}
+        initial='enter'
+        animate={controls}
+        exit='exit'
+        className={`${ className ? className : ''}`}
+      >
+        {children}
+      </m.section>
+    </>
   )
 }
