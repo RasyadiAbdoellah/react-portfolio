@@ -1,8 +1,6 @@
 import React from 'react'
-import { useLocation, Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import {motion as m, AnimateSharedLayout, useViewportScroll} from 'framer-motion'
-
-import PageContext from 'PageContext'
 
 import './Nav.css'
 
@@ -18,8 +16,7 @@ const underlineSpring = {
 };
 
 
-export default function Nav({list, colors}) {
-  const { dispatch } = React.useContext(PageContext)
+export default function Nav({list}) {
   const [isScrolled, setIsScrolled] = React.useState(false)
   const { hash } = useLocation()
   const { scrollY } = useViewportScroll()
@@ -48,14 +45,7 @@ export default function Nav({list, colors}) {
                 match ? navContent = entry.content : navContent = entry.altContent
               }
               return (
-                <a 
-                    href={entry.path}
-                    key={i+1} 
-                    onClick={(e) => {
-                      // dispatch({type: 'jump', payload: i})
-
-                    }}
-                  >
+                <a href={entry.path} key={i+1} >
                     <m.span animate={match ? 'active' : 'inactive'} variants={textVariants}>{navContent}</m.span>
                     {match && <m.hr layoutId='outline' className='underline' transition={underlineSpring}/>}
                   </a>

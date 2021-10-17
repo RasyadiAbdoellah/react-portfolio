@@ -10,14 +10,17 @@
   --red: #e84d4d;
 }
 
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   background-color: var(--darker-gray);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  font-weight: 300;
-  overflow: overlay;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -64,3 +67,17 @@ code {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px     rgba(0,0,0,0.5);
 }
+
+#root {
+  margin: 0;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  align-items: center;
+  transition: background-color 0.2s ease;
+}
+

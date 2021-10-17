@@ -1,8 +1,6 @@
 import React from 'react'
 import {motion as m} from 'framer-motion'
 
-import PageContext from 'PageContext'
-
 import Container from 'components/Container'
 import AnimLink from 'components/AnimLink'
 
@@ -26,8 +24,6 @@ export default function Intro() {
       setTimeout(updateTypedText, 50)
     }
   })
-
-  const { dispatch } = React.useContext(PageContext)
 
   return (
     <Container className='intro' id="top">

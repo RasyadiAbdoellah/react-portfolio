@@ -3,22 +3,18 @@ import {motion as m, useAnimation} from 'framer-motion'
 import {useInView} from 'react-intersection-observer'
 import { useHistory } from 'react-router-dom'
 
-import PageContext from 'PageContext'
-
 import './Container.css'
 
 const containerAnim = {
   enter: {
-    x: -300,
     opacity: 0,
     zIndex: 0,
   },
   center: {
-    x: 0,
     opacity: 1,
     zIndex: 1,
     transition: {
-      x: { 
+      y: { 
         type: "spring",
         stiffness: 500,
         damping: 75,
@@ -29,7 +25,6 @@ const containerAnim = {
     }
   },
   exit: {
-    x:300,
     opacity: 0,
     zIndex: 0,
     transition: {
@@ -42,7 +37,6 @@ const containerAnim = {
 };
 
 export default function Container (props) {
-  const { state } = React.useContext(PageContext)
   const controls = useAnimation()
   const history = useHistory()
   const [ ref, inView ] = useInView({
@@ -63,7 +57,6 @@ export default function Container (props) {
       <m.section
         id={id}
         ref={ref}
-        custom={state.direction}
         variants={containerAnim}
         initial='enter'
         animate={controls}
