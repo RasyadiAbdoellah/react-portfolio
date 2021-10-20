@@ -47,7 +47,7 @@ export default function Container (props) {
   
   React.useEffect(() => {
     if(inView) {
-      controls.start('center')
+      controls.start('center') 
       history.push(`/#${id}`)
     }
   }, [controls, inView, history, id])

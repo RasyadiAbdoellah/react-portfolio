@@ -17,6 +17,7 @@ const underlineSpring = {
 
 
 export default function Nav({list}) {
+  
   const [isScrolled, setIsScrolled] = React.useState(false)
   const { hash } = useLocation()
   const { scrollY } = useViewportScroll()
