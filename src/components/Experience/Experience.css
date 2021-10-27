@@ -6,26 +6,29 @@
 }
 
 .card {
-  max-width: 900px;
-  margin-bottom: 2rem;
+  max-width: 800px;
+  margin-bottom: 3rem;
+  box-sizing: border-box;
 }
 
 .card-heading {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  border-left: 2px solid var(--red);
+  padding-left: .5rem;
 }
 
 .card-heading * {
   margin: 0;
+  width: fit-content;
 }
 
 .card-content {
   margin-top: 0;
+  line-height: 1.5rem;
 }
-
-.work-period {
-  width: fit-content;
-  margin-top: .5rem;
-  margin-right: 1rem;
+.card-content ul{
+  list-style-type: '- ';
+  padding-inline-start: 1.5rem;
 }
 
 .card * {
@@ -33,6 +36,8 @@
 }
 
 .card a {
-  text-decoration: underline;
+  color: white;
+  font-weight: unset;
+  text-decoration: underline 2px solid var(--cyan);
   
 }

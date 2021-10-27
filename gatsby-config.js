@@ -7,8 +7,15 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `markdown`,
-        path: `${__dirname}/src/md`,
+        name: `projects`,
+        path: `${__dirname}/src/md/projects`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `workHistory`,
+        path: `${__dirname}/src/md/history`,
       },
     },
     'gatsby-transformer-remark',

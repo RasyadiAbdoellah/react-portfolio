@@ -1,5 +1,6 @@
 import React from 'react'
-import {motion as m} from 'framer-motion'
+import { graphql, useStaticQuery } from 'gatsby'
+import { motion as m } from 'framer-motion'
 
 import Container from 'components/Container'
 import './Experience.css'
@@ -22,40 +23,44 @@ const cardAnim = {
   },
 }
 
-export default function Projects () {
-  
+export default function Projects (props) {
+  const data = useStaticQuery(graphql`
+    query {
+      allMarkdownRemark(
+        filter: {fields: {collection: {eq: "workHistory"}}}
+        sort: {fields: frontmatter___date, order: DESC}
+      ) {
+        nodes {
+          html
+          frontmatter {
+            date
+            role
+            company
+          }
+        }
+      }
+    }
+  `)
+
   return (
     <Container id="experience">
       <h1>Where I've Been</h1>
-      <m.div className="card" variants={cardAnim}>
-        <div className="card-heading">
-          <p>2019 - Present</p>
-          <h2>Digital Banking Solutions Developer @ <strong>Bank BTPN, Jenius</strong></h2>
-        </div>
-        <p className="card-content">
-          Blurb about what I've been doing at Bank BTPN, Jenius
-        </p>
-      </m.div>
 
-      <m.div className="card" variants={cardAnim}>
-        <div className="card-heading">
-          <p>2016 - 2019</p>
-          <h2>Co-founder, Lead Designer, & Frontend Developer @ <strong>Deframe</strong></h2>
-        </div>
-        <p className="card-content">
-          Blurb about what I've been doing at Bank BTPN, Jenius
-        </p>
-      </m.div>
-
-      <m.div className="card" variants={cardAnim}>
-        <div className="card-heading">
-          <p>2013 - 2015</p>
-          <h2>Multimedia Specialist @ <strong>Shopdeca.com</strong></h2>
-        </div>
-        <p className="card-content">
-          Blurb about what I've been doing at Shopdeca
-        </p>
-      </m.div>
+      {
+        data.allMarkdownRemark.nodes.map(md => {
+          return (
+            <m.div className="card" variants={cardAnim}>
+              <div className="card-heading">
+                <h2>{md.frontmatter.role} <span>@ {md.frontmatter.company} </span></h2>
+                <p>{md.frontmatter.date}</p>
+              </div>
+              <div className="card-content" dangerouslySetInnerHTML={{__html:md.html}}>
+              </div>
+            </m.div>
+          )
+        })
+      }
+      
     </Container>
   )
 }
