@@ -23,7 +23,29 @@ const cardAnim = {
   },
 }
 
-export default function Projects (props) {
+const activeContentAnim = {
+  active: {
+    opacity: 1,
+    height: 'auto',
+    transition: {
+      opacity: { delay:0.1, },
+      height: { duration: 0.1 }
+    }
+  },
+  hidden: {
+    opacity: 0,
+    height: 0,
+    display: 'none',
+    transition: {
+      opacity: { duration: 0.1 },
+      height: { delay: 0.1 },
+      display: { delay: 0.1 }
+    },
+  }
+}
+
+export default function Experience (props) {
+  const [current, setCurrent] = React.useState(0)
   const data = useStaticQuery(graphql`
     query {
       allMarkdownRemark(
@@ -47,15 +69,25 @@ export default function Projects (props) {
       <h1>Where I've Been</h1>
 
       {
-        data.allMarkdownRemark.nodes.map(md => {
+        data.allMarkdownRemark.nodes.map((md, i) => {
           return (
             <m.div className="card" variants={cardAnim}>
-              <div className="card-heading">
+              <m.div 
+                animate={current === i ? {borderLeftWidth: '7px'} : {borderLeftWidth: '2px' } }
+                whileHover={{borderLeftWidth: '7px', backgroundColor: 'rgba(0,0,0,0.2)'}} 
+                transition={{type:'tween'}} 
+                className='card-heading'
+                onClick={() => {setCurrent(i)}}
+                >
                 <h2>{md.frontmatter.role} <span>@ {md.frontmatter.company} </span></h2>
                 <p>{md.frontmatter.date}</p>
-              </div>
-              <div className="card-content" dangerouslySetInnerHTML={{__html:md.html}}>
-              </div>
+              </m.div>
+              <m.div 
+                className="card-content" 
+                animate={current === i ? 'active' : 'hidden'} 
+                variants={activeContentAnim} 
+                dangerouslySetInnerHTML={{__html:md.html}}>
+              </m.div>
             </m.div>
           )
         })

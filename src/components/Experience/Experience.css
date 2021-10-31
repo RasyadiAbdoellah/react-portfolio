@@ -6,8 +6,7 @@
 }
 
 .card {
-  max-width: 800px;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
   box-sizing: border-box;
 }
 
@@ -17,19 +16,27 @@
   padding-left: .5rem;
 }
 
+.card-heading.active {
+  border-left: 7px solid var(--red);
+}
+
 .card-heading * {
   margin: 0;
-  width: fit-content;
+  width: auto;
+  cursor: pointer;
 }
 
 .card-content {
   margin-top: 0;
   line-height: 1.5rem;
 }
+
 .card-content ul{
   list-style-type: '- ';
   padding-inline-start: 1.5rem;
 }
+
+
 
 .card * {
   text-decoration: none;
