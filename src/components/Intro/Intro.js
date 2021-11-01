@@ -1,16 +1,16 @@
 import React from 'react'
+import {motion as m} from 'framer-motion'
+
 import Container from 'components/Container'
+import AnimLink from 'components/AnimLink'
 
 import './Intro.css'
-import { Link } from 'react-router-dom'
-import PageContext from 'PageContext'
-
 
 export default function Intro() {
 
   /*--------------------- JS TYPEWRITER ANIMATION------------------*/
-  const text = 'Fullstack Web Developer & UI/UX Designer'
-  const [typedText , setTypedText ] = React.useState('F')
+  const text = 'Web Developer & UI/UX Designer'
+  const [typedText , setTypedText ] = React.useState('W')
 
   const updateTypedText = () => {
     const updateStr = typedText + text[typedText.length]
@@ -25,24 +25,25 @@ export default function Intro() {
     }
   })
 
-  const { dispatch } = React.useContext(PageContext)
-
   return (
-    <Container className='intro'>
+    <Container className='intro' id="top">
+      <small>Hi there! I am</small>
       <h1 className='title'>
-        Hi there! I'm Ras
+        Rasyadi Abdoellah
       </h1>
-        <p className='subtitle'>
-          {typedText}<span className="cursor">|</span>
-        </p>
+      <p className='subtitle'>
+        {typedText}<span className="cursor">|</span>
+      </p>
       {/* <m.p animate={{width: 'fit-content'}} transition={{delay: .75, duration: 1.25, ease:'linear'}}>
         Fullstack Web Developer & UI/UX Designer
       </m.p> */}
-      <div style={{margin: '1.5rem 0'}}>
+      <m.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{ opacity: {duration: 0.5, delay: 1.75}}} style={{textAlign: 'center'}}>
         {/* onClick handler below sets animation direction. payload is the page index in navList. i.e linking to /me is 3rd in navList array so index = 2 */}
-        <a className={'button'} href={'#'}>CV/Résumé</a>
-        <Link to='/me' className={'button'} onClick={(e) => { dispatch({type: 'jump', payload: 2})}}>Contact</Link>
-      </div>
+        <p className="blurb">
+          Designer turned developer with a love for building thoughtful, intuitive experiences. I'm a <strong style={{color:"#fff"}}>Frontend Developer</strong>, currently building and managing web-based applications with <strong style={{color:"#fff"}}>Jenius</strong>, particularly <AnimLink href="https://www.jenius.com" target="_blank">Jenius.com</AnimLink> and <AnimLink href="https://www.cocreate.id" target="_blank">CoCreate.id</AnimLink>.
+        </p>
+        <a href='#me'><m.div className='button' whileHover={{backgroundColor:"#00a8a8", scale:1.1}} transition={{scale: {type:'spring', stiffness: 500, damping: 30}}}>Get in touch</m.div></a>
+      </m.div>
     </Container>
   )
 }

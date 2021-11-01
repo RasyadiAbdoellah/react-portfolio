@@ -1,16 +1,35 @@
+/* ---------------------------- CONTAINER STYLING --------------------------- */
+
+#top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/* -------------------------------------------------------------------------- */
+/* ------------------------ CONTAINER CONTENT STYLING ----------------------- */
+#top * {
+  font-weight: 300;
+}
+
+#top small {
+  font-size: 1rem;
+  letter-spacing: .1rem;
+}
+
 .intro {
-  color: #fff; 
-  width: 500px;
+  color: white; 
+  width: 600px;
 }
 
 .title {
-  margin-bottom: 0;
-  font-size: 2rem;
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 600;
 }
+
 .subtitle {
   /* font-family: 'Roboto Mono', monospace; */
-  font-weight: 300;
-  font-size: 1.5rem;
+  font-size: 2rem;
   min-height: 1rem;
   margin-top: .5rem;
   margin-bottom: 1rem;
@@ -18,42 +37,63 @@
 }
 
 .cursor {
-  color: #E84D4D;
+  color: var(--red);
   font-weight: 600;
   animation: 
-    blink .75s step-end infinite;
+  blink .75s step-end infinite;
 }
-.button {
-  text-decoration: none;
-  padding: 5px 15px;
-  margin-right: 10px;
-  background-color:#00a8a8;
-  color:#fff;
-  border-radius: 5px;
-  display: inline-block;
-}
-
-.button:hover {
-  color:#fff;
-  background-color:#007171;
-}
-
-.button:active {
-  color:#fff;
-  background-color:#00a8a8;
-}
-
+/* ---------------------- BLINKING ANIMATION KEYFRAMES ---------------------- */
 @keyframes blink {
   from, to { opacity: 0 }
   50% { opacity: 1; }
 }
+/* -------------------------------------------------------------------------- */
 
+.blurb {
+  color: var(--light-gray);
+  margin: 0;
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  text-align: left;
+}
+
+#top strong {
+  font-weight: 700;
+}
+
+.button {
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 25px 40px;
+  width: 150px;
+  margin-right: 10px;
+  color: white;
+  border:2px solid var(--cyan);
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.button:active {
+  color: white;
+  background-color: var(--cyan);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              RESPONSIVE STYLES                             */
+/* -------------------------------------------------------------------------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
   .intro {
     width: 90%;
   }
+  .title {
+    font-size: 2rem;
+  }
   .subtitle {
-    height: 3.25rem;
+    font-size: 1.3rem;
     margin-bottom: 1rem;
+  }
+  .blurb {
+    font-size: 1rem;
   }
 }

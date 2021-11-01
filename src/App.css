@@ -1,9 +1,0 @@
-#main {
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  height: 100vh;
-  width: 100vw;
-  align-items: center;
-  transition: background-color 0.2s ease;
-}
