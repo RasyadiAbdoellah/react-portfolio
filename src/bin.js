@@ -29,3 +29,30 @@ export function usePrevious(value) {
   }, [value]);
   return ref.current;
 }
+
+const history = useHistory()
+//sets page to index of page path and stores direction
+const usePageSwitcher = React.useReducer((state, action) => {
+  let currentPage
+  switch(action.type) {
+    case 'up' : 
+      currentPage = clamp(state.page-1, 0 , navList.length-1)
+    break
+    case 'down' :
+      currentPage = clamp(state.page+1, 0 , navList.length-1)
+    break
+    case 'jump' :
+      currentPage = action.payload
+    break
+    default :
+      currentPage = state.page
+    break
+  }
+  return {
+    page: currentPage,
+    direction: clamp(currentPage - state.page, -1, 1)
+  }
+}, {
+  page: navList.map(e => e.path).indexOf(history.location.pathname), 
+  direction : 0
+})
