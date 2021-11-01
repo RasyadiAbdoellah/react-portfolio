@@ -1,11 +1,11 @@
 import React from "react"
-import { BrowserRouter as Router } from 'react-router-dom';
+import { StaticRouter as Router } from 'react-router-dom';
 
 import 'index.css'
 
 export const wrapRootElement = ({ element }) => {
   return (
-    <Router>
+    <Router location="/" context={{}}>
         {element}
     </Router> 
   )
