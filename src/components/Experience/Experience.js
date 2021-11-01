@@ -1,83 +1,99 @@
 import React from 'react'
-import {motion as m} from 'framer-motion'
-import {default as Markdown, compiler} from 'markdown-to-jsx'
+import { graphql, useStaticQuery } from 'gatsby'
+import { motion as m } from 'framer-motion'
 
 import Container from 'components/Container'
 import './Experience.css'
 
-const importAll = (r) => r.keys().map(r)
-const mdFiles = importAll(require.context('md/', false, /\.md$/))
-
 const cardAnim = {
   enter: {
     opacity: 0,
-    x: -50
+    y: 50
   },
   center: {
     opacity: 1,
-    x: 0,
+    y: 0,
   },
   exit: {
     opacity: 0,
-    x: -50,
+    y: -50,
     transition: {
       opacity: { duration: 0.5}
     }
   },
 }
 
-export default function Projects (props) {
-  
-  const [contentList ,setContentList] = React.useState(null)
-
-  React.useLayoutEffect(() => {
-    async function fetchTexts() {
-      const texts = await Promise.all(mdFiles.map(file => fetch(file.default).then(res => res.text()).catch(err => console.error(err))))
-      setContentList(texts)
+const activeContentAnim = {
+  active: {
+    opacity: 1,
+    height: 'auto',
+    transition: {
+      opacity: { delay:0.1, },
+      height: { duration: 0.1 }
     }
-    fetchTexts()
-  }, [])
-  
+  },
+  hidden: {
+    opacity: 0,
+    height: 0,
+    display: 'none',
+    transition: {
+      opacity: { duration: 0.1 },
+      height: { delay: 0.1 },
+      display: { delay: 0.1 }
+    },
+  }
+}
+
+export default function Experience (props) {
+  const [current, setCurrent] = React.useState(0)
+  const data = useStaticQuery(graphql`
+    query {
+      allMarkdownRemark(
+        filter: {fields: {collection: {eq: "workHistory"}}}
+        sort: {fields: frontmatter___date, order: DESC}
+      ) {
+        nodes {
+          html
+          frontmatter {
+            date
+            role
+            company
+          }
+        }
+      }
+    }
+  `)
+
   return (
-    contentList && <Container id="experience">
+    <Container id="experience">
       <h1>Where I've Been</h1>
-      <m.div className="card" variants={cardAnim}>
-        <div className="card-heading">
-          <p>2019 - Present</p>
-          <h2>Digital Banking Solutions Developer @ <strong>Bank BTPN, Jenius</strong></h2>
-        </div>
-        <p className="card-content">
-          Blurb about what I've been doing at Bank BTPN, Jenius
-        </p>
-      </m.div>
 
-      <m.div className="card" variants={cardAnim}>
-        <div className="card-heading">
-          <p>2016 - 2019</p>
-          <h2>Co-founder, Lead Designer, & Frontend Developer @ <strong>Deframe</strong></h2>
-        </div>
-        <p className="card-content">
-          Blurb about what I've been doing at Bank BTPN, Jenius
-        </p>
-      </m.div>
-
-      <m.div className="card" variants={cardAnim}>
-        <div className="card-heading">
-          <p>2013 - 2015</p>
-          <h2>Multimedia Specialist @ <strong>Shopdeca.com</strong></h2>
-        </div>
-        <p className="card-content">
-          Blurb about what I've been doing at Shopdeca
-        </p>
-      </m.div>
-
-        {contentList.map((content, i) => {
+      {
+        data.allMarkdownRemark.nodes.map((md, i) => {
           return (
-            <m.div key={i} variants={cardAnim} className="card">
-              <Markdown>{content}</Markdown>
+            <m.div 
+              className="card" 
+              variants={cardAnim}
+              animate={current === i ? {borderLeftColor:'#e84d4d' } : {borderLeftColor:'#34393d' } }
+              whileHover={{borderLeftColor:'#e84d4d', backgroundColor: 'rgba(255,255,255,0.2)'}} 
+              transition={{type:'tween'}}
+              onClick={() => {setCurrent(i)}}
+            >
+              <m.div className='card-heading'>
+                <h2>{md.frontmatter.role} <span>@ {md.frontmatter.company} </span></h2>
+                <p>{md.frontmatter.date}</p>
+              </m.div>
+              <m.div 
+                className="card-content" 
+                animate={current === i ? 'active' : 'hidden'} 
+                variants={activeContentAnim} 
+                dangerouslySetInnerHTML={{__html:md.html}}>
+              </m.div>
             </m.div>
           )
-        })}
+        })
+      }
+      
     </Container>
   )
 }
