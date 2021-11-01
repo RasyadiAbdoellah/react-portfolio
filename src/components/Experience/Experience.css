@@ -1,31 +1,68 @@
+/* ---------------------------- CONTAINER STYLING --------------------------- */
+
 #experience {
   color: white;
-  max-width: 960px;
+  max-width: 600px;
   margin-top: 2rem;
   padding: 0 1rem;
 }
 
+/* -------------------------------------------------------------------------- */
+/*                             CARD GROUP STYLING                             */
+/* -------------------------------------------------------------------------- */
+
 .card {
-  margin-bottom: 1.5rem;
-  box-sizing: border-box;
+  box-sizing: content-box;
+  background-color: rgba(255,255,255, 0.05);
+  border-left: 5px solid;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+  border-color: var(--dark-gray);
+  padding: 1rem 0;
+  cursor: pointer;
 }
+
+.card * {
+  text-decoration: none;
+}
+
+.card p {
+  font-weight: 300;
+}
+
+.card a {
+  color: white;
+  font-weight: unset;
+  text-decoration: underline 2px solid var(--cyan); 
+}
+
+.card:first-of-type {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-top: 2px solid var(--dark-gray);
+}
+
+.card:last-of-type {
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               CARD INTERNALS                               */
+/* -------------------------------------------------------------------------- */
+
+/* ------------------------------ CARD HEADING ------------------------------ */
 
 .card-heading {
-  margin-bottom: 1.5rem;
-  border-left: 2px solid var(--red);
   padding-left: .5rem;
-}
-
-.card-heading.active {
-  border-left: 7px solid var(--red);
 }
 
 .card-heading * {
   margin: 0;
   width: auto;
-  cursor: pointer;
 }
 
+/* ------------------------------ CARD CONTENT ------------------------------ */
 .card-content {
   margin-top: 0;
   line-height: 1.5rem;
@@ -34,17 +71,13 @@
 .card-content ul{
   list-style-type: '- ';
   padding-inline-start: 1.5rem;
+  margin: 0;
+  padding: 1rem;
+  padding-bottom: 0;
 }
 
-
-
-.card * {
-  text-decoration: none;
+.card-content p {
+  margin: 0;
+  margin-bottom: 1rem;
 }
 
-.card a {
-  color: white;
-  font-weight: unset;
-  text-decoration: underline 2px solid var(--cyan);
-  
-}

@@ -71,14 +71,15 @@ export default function Experience (props) {
       {
         data.allMarkdownRemark.nodes.map((md, i) => {
           return (
-            <m.div className="card" variants={cardAnim}>
-              <m.div 
-                animate={current === i ? {borderLeftWidth: '7px'} : {borderLeftWidth: '2px' } }
-                whileHover={{borderLeftWidth: '7px', backgroundColor: 'rgba(0,0,0,0.2)'}} 
-                transition={{type:'tween'}} 
-                className='card-heading'
-                onClick={() => {setCurrent(i)}}
-                >
+            <m.div 
+              className="card" 
+              variants={cardAnim}
+              animate={current === i ? {borderLeftColor:'#e84d4d' } : {borderLeftColor:'#34393d' } }
+              whileHover={{borderLeftColor:'#e84d4d', backgroundColor: 'rgba(255,255,255,0.2)'}} 
+              transition={{type:'tween'}}
+              onClick={() => {setCurrent(i)}}
+            >
+              <m.div className='card-heading'>
                 <h2>{md.frontmatter.role} <span>@ {md.frontmatter.company} </span></h2>
                 <p>{md.frontmatter.date}</p>
               </m.div>

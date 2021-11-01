@@ -1,24 +1,32 @@
+/* ---------------------------- CONTAINER STYLING --------------------------- */
+
 #top {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-* {
+/* -------------------------------------------------------------------------- */
+/* ------------------------ CONTAINER CONTENT STYLING ----------------------- */
+#top * {
   font-weight: 300;
 }
-small {
+
+#top small {
   font-size: 1rem;
   letter-spacing: .1rem;
 }
+
 .intro {
   color: white; 
-  width: 500px;
+  width: 600px;
 }
+
 .title {
   margin: 0;
   font-size: 3rem;
   font-weight: 600;
 }
+
 .subtitle {
   /* font-family: 'Roboto Mono', monospace; */
   font-size: 2rem;
@@ -27,12 +35,20 @@ small {
   margin-bottom: 1rem;
   white-space: wrap; 
 }
+
 .cursor {
   color: var(--red);
   font-weight: 600;
   animation: 
-    blink .75s step-end infinite;
+  blink .75s step-end infinite;
 }
+/* ---------------------- BLINKING ANIMATION KEYFRAMES ---------------------- */
+@keyframes blink {
+  from, to { opacity: 0 }
+  50% { opacity: 1; }
+}
+/* -------------------------------------------------------------------------- */
+
 .blurb {
   color: var(--light-gray);
   margin: 0;
@@ -42,7 +58,7 @@ small {
   text-align: left;
 }
 
-strong {
+#top strong {
   font-weight: 700;
 }
 
@@ -63,11 +79,9 @@ strong {
   background-color: var(--cyan);
 }
 
-@keyframes blink {
-  from, to { opacity: 0 }
-  50% { opacity: 1; }
-}
-
+/* -------------------------------------------------------------------------- */
+/*                              RESPONSIVE STYLES                             */
+/* -------------------------------------------------------------------------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
   .intro {
     width: 90%;
