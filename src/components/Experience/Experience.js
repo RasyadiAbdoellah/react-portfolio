@@ -74,7 +74,7 @@ export default function Experience (props) {
             <m.div 
               className="card" 
               variants={cardAnim}
-              animate={current === i ? {borderLeftColor:'#e84d4d' } : {borderLeftColor:'#34393d' } }
+              animate={current === i ? {borderLeftColor:'#e84d4d', backgroundColor:'rgba(255,255,255,0.05)'  } : {borderLeftColor:'#34393d' } }
               whileHover={{borderLeftColor:'#e84d4d', backgroundColor: 'rgba(255,255,255,0.2)'}} 
               transition={{type:'tween'}}
               onClick={() => {setCurrent(i)}}
