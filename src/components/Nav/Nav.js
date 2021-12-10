@@ -29,7 +29,7 @@ export default function Nav({list}) {
   return (
     <m.nav className="fixed-nav" 
     animate={{ 
-      boxShadow: isScrolled ? '0 2px 20px rgba(0, 0, 0, 0.2)' : '0 0 0 rgba(0, 0, 0, 0)',
+      boxShadow: isScrolled ? '0 2px 20px rgba(0, 0, 0, 0.5)' : '0 0 0 rgba(0, 0, 0, 0)',
       backgroundColor: isScrolled ? '#091216' : '#212629'
       // backdrop filter removed due to lack of firefox support and 
       // backdropFilter: isScrolled ? 'blur(10px)' : 'blur(0px)',
