@@ -6,7 +6,7 @@
   width:100vw;
   height: 3rem;
   z-index: 1000;
-  background-color: #00000000;
+  background-color: var(--darker-gray);
   /* box-shadow: 0 2px 5px rgba(0, 0, 0, .2); */
 }
 .fixed-nav a {
@@ -40,6 +40,17 @@
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
   .inner {
     width:100%;
+  }
+
+  .wrapper {
+    width:100%;
+  }
+
+  .fixed-nav a {
+    width: unset;
+  }
+  .logo {
+    display: none;
   }
 
   .underline {
