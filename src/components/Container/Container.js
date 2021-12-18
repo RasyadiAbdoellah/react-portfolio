@@ -20,7 +20,7 @@ const containerAnim = {
         damping: 75,
         mass: 5
       },
-      delayChildren: .5,
+      delayChildren: .05,
       staggerChildren: 0.1
     }
   },

@@ -43,7 +43,7 @@ export default function Projects (props) {
 
   return (
     <Container id="work">
-      <h1>Projects</h1>
+      <h1>Featured Projects</h1>
 
       {
         data.allMarkdownRemark.nodes.map(md => {

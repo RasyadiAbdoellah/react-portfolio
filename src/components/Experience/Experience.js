@@ -8,17 +8,14 @@ import './Experience.css'
 const cardAnim = {
   enter: {
     opacity: 0,
-    y: 50
   },
   center: {
-    opacity: 1,
-    y: 0,
+    opacity: .5,
   },
   exit: {
     opacity: 0,
-    y: -50,
     transition: {
-      opacity: { duration: 0.5}
+      opacity: { duration: 0.3}
     }
   },
 }
@@ -39,7 +36,6 @@ const activeContentAnim = {
     transition: {
       opacity: { duration: 0.1 },
       height: { delay: 0.1 },
-      display: { delay: 0.1 }
     },
   }
 }
@@ -65,18 +61,18 @@ export default function Experience (props) {
   `)
 
   return (
-    <Container id="experience">
+    <Container id="me">
       <h1>Where I've Been</h1>
 
       {
         data.allMarkdownRemark.nodes.map((md, i) => {
           return (
             <m.div 
-              className="card" 
+              className={`card ${ current === i ? 'active' : ''}`}
               variants={cardAnim}
-              animate={current === i ? {borderLeftColor:'#e84d4d', backgroundColor:'rgba(255,255,255,0.05)'  } : {borderLeftColor:'#34393d' } }
-              whileHover={{borderLeftColor:'#e84d4d', backgroundColor: 'rgba(255,255,255,0.2)'}} 
-              transition={{type:'tween'}}
+              // animate={current === i ? "active" : "inactive" }
+              // whileHover="hover"
+              // transition={{type:'tween'}}
               onClick={() => {setCurrent(i)}}
             >
               <m.div className='card-heading'>

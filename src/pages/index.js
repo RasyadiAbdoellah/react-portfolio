@@ -8,9 +8,8 @@ import Contact from 'components/Contact'
 
 const navList =  [
   {path: '#top', content: 'Hi!'},
-  {path: '#experience', content: 'Experience'},
-  {path: '#work', content: 'Work'},
-  {path: '#me', content: 'Contact'}
+  {path: '#me', content: 'About'},
+  {path: '#contact', content: 'Contact'}
 ]
 
 function App() {
@@ -19,7 +18,6 @@ function App() {
       <Nav list={navList}/>
       <Intro/>
       <Experience/>
-      <Work/>
       <Contact/>
     </>
   );
