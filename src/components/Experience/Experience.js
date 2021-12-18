@@ -62,7 +62,8 @@ export default function Experience (props) {
 
   return (
     <Container id="me">
-      <h1>Where I've Been</h1>
+      <h1>About me</h1>
+      <h2>Where I've Been</h2>
 
       {
         data.allMarkdownRemark.nodes.map((md, i) => {

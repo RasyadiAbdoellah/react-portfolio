@@ -42,7 +42,7 @@ export default function Intro() {
         <p className="blurb">
           Designer turned developer with a love for building thoughtful, intuitive experiences. I'm a <strong style={{color:"#fff"}}>Frontend Developer</strong>, currently building and managing web-based applications with <strong style={{color:"#fff"}}>Jenius</strong>, particularly <AnimLink href="https://www.jenius.com" target="_blank">Jenius.com</AnimLink> and <AnimLink href="https://www.cocreate.id" target="_blank">CoCreate.id</AnimLink>.
         </p>
-        <a href='#me'><m.div className='button' whileHover={{backgroundColor:"#00a8a8", scale:1.1}} transition={{scale: {type:'spring', stiffness: 500, damping: 30}}}>Get in touch</m.div></a>
+        <a href='#contact'><m.div className='button' whileHover={{backgroundColor:"#00a8a8", scale:1.1}} transition={{scale: {type:'spring', stiffness: 500, damping: 30}}}>Get in touch</m.div></a>
       </m.div>
     </Container>
   )

@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom'
 import {motion as m, AnimateSharedLayout, useViewportScroll} from 'framer-motion'
 
 import './Nav.css'
+import logo from './nobg-noborder.png'
 
 const textVariants = {
   active: {fontWeight:'600', color:'#fff'},
@@ -23,7 +24,7 @@ export default function Nav({list}) {
   const { scrollY } = useViewportScroll()
   
   scrollY.onChange(() => {
-    scrollY.get() > 0 ? setIsScrolled(true) : setIsScrolled(false)
+    scrollY.get() > 200 ? setIsScrolled(true) : setIsScrolled(false)
   })
 
   return (
@@ -37,7 +38,11 @@ export default function Nav({list}) {
     transition={{delay:.1}}
     >
       <div className="inner">
-        <div className="logo" style={{color:'white'}}>logo</div>
+          <m.img 
+            className="logo" 
+            src={logo} 
+            // animate={!isScrolled ? {opacity: 0 }: {opacity: 1}} 
+          />
         <div className="wrapper">
           <AnimateSharedLayout>
             {list.map((entry, i) => {
