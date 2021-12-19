@@ -24,7 +24,7 @@ export default function Nav({list}) {
   const { scrollY } = useViewportScroll()
   
   scrollY.onChange(() => {
-    scrollY.get() > 200 ? setIsScrolled(true) : setIsScrolled(false)
+    scrollY.get() > 300 ? setIsScrolled(true) : setIsScrolled(false)
   })
 
   return (
@@ -40,8 +40,9 @@ export default function Nav({list}) {
       <div className="inner">
           <m.img 
             className="logo" 
-            src={logo} 
-            // animate={!isScrolled ? {opacity: 0 }: {opacity: 1}} 
+            src={logo}
+            initial={{opacity: 0}}
+            animate={!isScrolled ? {opacity: 0 }: {opacity: 1}} 
           />
         <div className="wrapper">
           <AnimateSharedLayout>

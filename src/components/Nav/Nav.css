@@ -45,6 +45,7 @@
   border-bottom: 3px solid var(--red);
 }
 
+
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
   .inner {
     width:100%;

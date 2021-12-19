@@ -6,6 +6,16 @@ import AnimLink from 'components/AnimLink'
 
 import './Intro.css'
 
+
+const svgAnim = {
+  hidden: {
+    pathLength: 0
+  },
+  visible: {
+    pathLength: 1
+  }
+}
+
 export default function Intro() {
 
   /*--------------------- JS TYPEWRITER ANIMATION------------------*/
@@ -44,6 +54,29 @@ export default function Intro() {
         </p>
         <a href='#contact'><m.div className='button' whileHover={{backgroundColor:"#00a8a8", scale:1.1}} transition={{scale: {type:'spring', stiffness: 500, damping: 30}}}>Get in touch</m.div></a>
       </m.div>
+      <m.svg className="svg-logo" viewBox="0 0 280 280">
+        <title>logo</title>
+        <m.path
+          d="M91.27 238.29 91.27 51.59 180.49 51.59 92.86 141.25" 
+          variants={svgAnim} 
+          initial="hidden" 
+          animate="visible"
+          transition={{
+            default: { duration: 2, ease: "easeInOut", delay: 2},
+          }}
+        />
+        <m.path
+          d="M91.27 50.59 187.11 230.79 91.27 230.79" 
+          variants={svgAnim} 
+          initial="hidden" 
+          animate="visible"
+          transition={{
+            default: { duration: 2, ease: "easeInOut", delay:2.8 },
+
+          }}
+        />
+      </m.svg>
     </Container>
+
   )
 }
