@@ -62,34 +62,130 @@ export default function Experience (props) {
 
   return (
     <Container id="me">
-      <h1>About me</h1>
-      <h2>Where I've Been</h2>
+      <div id='about'>
+        <div>
+          <h1>About me</h1>
+          <p>Blurb about me</p>
+        </div>
 
-      {
-        data.allMarkdownRemark.nodes.map((md, i) => {
-          return (
-            <m.div 
-              className={`card ${ current === i ? 'active' : ''}`}
-              variants={cardAnim}
-              // animate={current === i ? "active" : "inactive" }
-              // whileHover="hover"
-              // transition={{type:'tween'}}
-              onClick={() => {setCurrent(i)}}
-            >
-              <m.div className='card-heading'>
-                <h2>{md.frontmatter.role} <span>@ {md.frontmatter.company} </span></h2>
-                <p>{md.frontmatter.date}</p>
-              </m.div>
+        <div>
+          <h1>Tools</h1>
+          <ul>
+            <li>
+              Adobe XD
+            </li>
+            <li>
+              Figma
+            </li>
+            <li>
+              VSCode
+            </li>
+            <li>
+              Git
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h1>Languages</h1>
+          <ul>
+            <li>
+              HTML
+            </li>
+            <li>
+              CSS/SASS
+            </li>
+            <li>
+              Javascript
+            </li>
+            <li>
+              PHP
+            </li>
+            <li>
+              Ruby
+            </li>
+            <li>
+              SQL
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h1>Technologies</h1>
+          <ul>
+            <li>
+              Bootstrap
+            </li>
+            <li>
+              Bulma.io
+            </li>
+            <li>
+              React
+            </li>
+            <li>
+              Redux
+            </li>
+            <li>
+              Gatsby.js
+            </li>
+            <li>
+              Node
+            </li>
+            <li>
+              Express
+            </li>
+            <li>
+              Sequelize
+            </li>
+            <li>
+              Ruby on Rails
+            </li>
+            <li>
+              MySQL
+            </li>
+            <li>
+              PostgreSQL
+            </li>
+            <li>
+              Wordpress
+            </li>
+            <li>
+              Wix
+            </li>
+            <li>
+              AWS
+            </li>
+            <li>
+              Heroku
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id='experience'>
+        <h1>Where I've Been</h1>
+
+        {
+          data.allMarkdownRemark.nodes.map((md, i) => {
+            return (
               <m.div 
-                className="card-content" 
-                animate={current === i ? 'active' : 'hidden'} 
-                variants={activeContentAnim} 
-                dangerouslySetInnerHTML={{__html:md.html}}>
+                className={`card ${ current === i ? 'active' : ''}`}
+                variants={cardAnim}
+                onClick={() => {setCurrent(i)}}
+              >
+                <m.div className='card-heading'>
+                  <h2>{md.frontmatter.role} <span>@ {md.frontmatter.company} </span></h2>
+                  <p>{md.frontmatter.date}</p>
+                </m.div>
+                <m.div 
+                  className="card-content" 
+                  animate={current === i ? 'active' : 'hidden'} 
+                  variants={activeContentAnim} 
+                  dangerouslySetInnerHTML={{__html:md.html}}>
+                </m.div>
               </m.div>
-            </m.div>
-          )
-        })
-      }
+            )
+          })
+        }        
+      </div>
       
     </Container>
   )

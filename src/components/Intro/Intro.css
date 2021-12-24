@@ -19,7 +19,7 @@
 
 .intro {
   color: white; 
-  width: 700px;
+  max-width: 760px;
 }
 
 .title {
@@ -96,10 +96,20 @@
 /* -------------------------------------------------------------------------- */
 /*                              RESPONSIVE STYLES                             */
 /* -------------------------------------------------------------------------- */
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+
+/* Tablet */
+@media only screen and (max-width : 960px) {
   .intro {
     width: 90%;
   }
+  .svg-logo {
+    left: -200px;
+    top: 20%;
+  }
+}
+
+/* Mobile */
+@media only screen and (max-width : 480px) {
   .title {
     font-size: 2rem;
   }
@@ -113,6 +123,25 @@
   .svg-logo {
     width: 425px;
     left: -150px;
-    top: 100px;
+    top: 15%;
+  }
+}
+
+/* Mobile small screen */
+
+@media only screen and (max-height : 640px) {
+  .svg-logo {
+    width: 425px;
+    left: -150px;
+    top: 5%;
+  }
+}
+
+/* MObile landscape */
+@media only screen and (max-height : 480px) {
+  .svg-logo {
+    width: 425px;
+    left: -150px;
+    top: -15%;
   }
 }

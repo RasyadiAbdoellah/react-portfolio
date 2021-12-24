@@ -45,8 +45,12 @@
   border-bottom: 3px solid var(--red);
 }
 
+/* -------------------------------------------------------------------------- */
+/*                              RESPONSIVE STYLES                             */
+/* -------------------------------------------------------------------------- */
 
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+/* Tablet */
+@media only screen and (max-width : 960px) {
   .inner {
     width:100%;
   }
@@ -59,6 +63,10 @@
     width: unset;
     padding-bottom: .5rem;
   }
+}
+
+/* Mobile */
+@media only screen and (max-width : 480px) {
   .logo {
     display: none;
   }

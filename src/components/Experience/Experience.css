@@ -2,9 +2,18 @@
 
 #me {
   color: white;
-  max-width: 750px;
-  margin-top: 2rem;
+  max-width: 960px;
+  margin-top: 4rem;
   padding: 0 1rem;
+  display: flex;
+}
+
+#about {
+  width: 40%;
+}
+
+#experience {
+  width: 60%;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -87,3 +96,12 @@
 /*                              RESPONSIVE STYLES                             */
 /* -------------------------------------------------------------------------- */
 
+/* Mobile */
+@media only screen and (max-width : 480px) {
+ #me {
+   flex-direction: column;
+ }
+ #experience, #about {
+   width: 100%;
+ }
+}
