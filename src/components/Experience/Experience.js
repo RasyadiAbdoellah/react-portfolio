@@ -25,17 +25,18 @@ const activeContentAnim = {
     opacity: 1,
     height: 'auto',
     transition: {
-      opacity: { delay:0.1, },
-      height: { duration: 0.1 }
+      opacity: { delay: .5, },
+      height: { duration: .5 }
     }
   },
   hidden: {
     opacity: 0,
     height: 0,
-    display: 'none',
+    visibility: 'hidden',
     transition: {
-      opacity: { duration: 0.1 },
-      height: { delay: 0.1 },
+      opacity: { duration: 0.3 },
+      height: { duration: 0.5, },
+      visibility: { delay: 0.5 },
     },
   }
 }

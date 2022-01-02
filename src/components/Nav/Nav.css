@@ -27,7 +27,7 @@
 
 .inner {
   display: flex;
-  width: 80vw;
+  width: 90vw;
   justify-content: space-between;
   align-items: stretch;
 }
