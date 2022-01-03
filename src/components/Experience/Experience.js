@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { motion as m } from 'framer-motion'
+import { Helmet } from 'react-helmet'
 
 import Container from 'components/Container'
 import './Experience.css'
@@ -41,6 +42,26 @@ const activeContentAnim = {
   }
 }
 
+const fragment = (     
+<div>
+  <h1>Tools I Use</h1>
+  <ul>
+    <li>
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xd/xd-plain.svg"  alt="Adobe XD" title="Adobe XD"/>
+    </li>
+    <li>
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" title="Figma"/>
+    </li>
+    <li>
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original-wordmark.svg" alt="VS Code" title="VS Code"/>
+    </li>
+    <li>
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-plain-wordmark.svg" alt="Git" title="Git"/>
+    </li>
+  </ul>
+</div>
+)
+
 export default function Experience (props) {
   const [current, setCurrent] = React.useState(0)
   const data = useStaticQuery(graphql`
@@ -63,103 +84,12 @@ export default function Experience (props) {
 
   return (
     <Container id="me">
+      <Helmet>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"/>
+      </Helmet>
       <div id='about'>
-        <div>
-          <h1>About me</h1>
-          <p>Blurb about me</p>
-        </div>
-
-        <div>
-          <h1>Tools</h1>
-          <ul>
-            <li>
-              Adobe XD
-            </li>
-            <li>
-              Figma
-            </li>
-            <li>
-              VSCode
-            </li>
-            <li>
-              Git
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h1>Languages</h1>
-          <ul>
-            <li>
-              HTML
-            </li>
-            <li>
-              CSS/SASS
-            </li>
-            <li>
-              Javascript
-            </li>
-            <li>
-              PHP
-            </li>
-            <li>
-              Ruby
-            </li>
-            <li>
-              SQL
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <h1>Technologies</h1>
-          <ul>
-            <li>
-              Bootstrap
-            </li>
-            <li>
-              Bulma.io
-            </li>
-            <li>
-              React
-            </li>
-            <li>
-              Redux
-            </li>
-            <li>
-              Gatsby.js
-            </li>
-            <li>
-              Node
-            </li>
-            <li>
-              Express
-            </li>
-            <li>
-              Sequelize
-            </li>
-            <li>
-              Ruby on Rails
-            </li>
-            <li>
-              MySQL
-            </li>
-            <li>
-              PostgreSQL
-            </li>
-            <li>
-              Wordpress
-            </li>
-            <li>
-              Wix
-            </li>
-            <li>
-              AWS
-            </li>
-            <li>
-              Heroku
-            </li>
-          </ul>
-        </div>
+        <h1>About me</h1>
+        <p>Blurb about me</p>
       </div>
       <div id='experience'>
         <h1>Where I've Been</h1>
@@ -187,7 +117,71 @@ export default function Experience (props) {
           })
         }        
       </div>
-      
+      <div id="tech">
+          <h1>Tech I Use</h1>
+          <div className='inner'>
+            <div>
+              <h2>Frontend</h2>
+              <ul className='icon-list'>
+                <li>
+                  <i className="devicon-bootstrap-plain colored"></i> Bootstrap
+                </li>
+                <li>
+                  <i className="devicon-bulma-plain colored"></i> Bulma
+                </li>
+                <li>
+                  <i className="devicon-react-original colored"></i> React
+                </li>
+                <li>
+                  <i className="devicon-redux-original colored"></i> Redux
+                </li>
+                <li>
+                  <i className="devicon-gatsby-plain colored"></i> Gatsby
+                </li>
+                <li>
+                  <i class="devicon-storybook-plain colored"></i> Storybook
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h2>Backend</h2>
+              <ul className='icon-list'>
+                <li>
+                  <i className="devicon-nodejs-plain colored" title='NodeJS'></i> NodeJS
+                </li>
+                <li>
+                  <i className="devicon-express-original" title='Express.js'></i> Express
+                </li>
+                <li>
+                  <i className="devicon-sequelize-plain colored" title='Sequelize'></i> Sequelize
+                </li>
+                <li>
+                  <i className="devicon-rails-plain colored" title='Ruby on Rails'></i> Ruby on Rails
+                </li>
+                <li>
+                  <i className="devicon-mysql-plain" title='MySQL'></i> MySQL
+                </li>
+                <li>
+                  <i className="devicon-postgresql-plain colored" title='PostgreSQL'></i> Postgres
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h2>Tooling</h2>
+              <ul className='icon-list'>
+                <li>
+                  <i className="devicon-amazonwebservices-plain colored" title='AWS'></i> AWS
+                </li>
+                <li>
+                  <i className="devicon-heroku-plain colored" title='Heroku'></i> Heroku
+                </li>
+                <li>
+                  <i className="devicon-docker-plain colored" title='Docker'></i> Docker
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
     </Container>
   )
 }
