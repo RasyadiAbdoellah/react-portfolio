@@ -103,7 +103,6 @@
 /* -------------------------------------------------------------------------- */
 
 .icon-list {
-  text-align: center;
   font-size: .75rem;
   padding: 0;
   margin: 0;
@@ -125,10 +124,14 @@
 
 /* Mobile */
 @media only screen and (max-width : 480px) {
- #me {
-   flex-direction: column;
- }
- #experience, #about {
-   width: 100%;
- }
+  #me {
+    flex-direction: column;
+  }
+  #experience, #about {
+    width: 100%;
+  }
+
+  #tech .inner {
+    display: block
+  }
 }

@@ -167,7 +167,7 @@ export default function Experience (props) {
               </ul>
             </div>
             <div>
-              <h2>Tooling</h2>
+              <h2>Tools</h2>
               <ul className='icon-list'>
                 <li>
                   <i className="devicon-amazonwebservices-plain colored" title='AWS'></i> AWS
