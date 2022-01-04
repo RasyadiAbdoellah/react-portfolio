@@ -47,8 +47,8 @@ const activeContentAnim = {
 export default function Experience (props) {
 
   const [current, setCurrent] = React.useState(0)
-  
-  const FEListItems = ["Bootstrap", "Bulma", "React", "Redux", "Gatsby", "Storybook"]
+
+  const FEListItems = ["Bootstrap", "React", "Redux", "Gatsby", "Storybook"]
   const BEListItems = [
     "NodeJS", 
     [
@@ -58,14 +58,7 @@ export default function Experience (props) {
         color: false
       }
     ], 
-    "Sequelize", 
-    [
-      "Ruby on Rails", 
-      {
-        className: "devicon-rails-plain",
-        color: true
-      }
-    ], 
+    "Sequelize",  
     ["MySQL", { color: false }], 
     "PostgreSQL"
   ]
@@ -105,7 +98,9 @@ export default function Experience (props) {
       </Helmet>
       <div id='about'>
         <h1>About me</h1>
-        <p>Blurb about me</p>
+        <p>Before I became a developer, I was as a multimedia designer and photographer, creating digital content for a number of internet startups. Though I was officially a designer, like all startup positions I had to wear many hats, which eventually led me to front-end development.</p>
+
+        <p>After teaching myself CSS, HTML, and Javascript, I took a 60 hour/week, 3 month immersive web development program to expand my knowledge. I now apply my skills - both in design and development - towards helping create solutions that are both accessible and cleverly designed.</p>
       </div>
       <div id='experience'>
         <h1>Where I've Been</h1>
@@ -134,7 +129,7 @@ export default function Experience (props) {
         }        
       </div>
       <div id="tech">
-          <h1>Tech I Use</h1>
+          <h1>Tech I'm Using</h1>
           <div className='inner'>
             <div>
               <h2>Frontend</h2>

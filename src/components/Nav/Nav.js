@@ -31,7 +31,7 @@ export default function Nav({list}) {
     <m.nav className="fixed-nav" 
     animate={{ 
       boxShadow: isScrolled ? '0 2px 20px rgba(0, 0, 0, 0.5)' : '0 0 0 rgba(0, 0, 0, 0)',
-      backgroundColor: isScrolled ? '#091216' : '#212629'
+      backgroundColor: isScrolled ? '#091216' : '#1b2525'
       // backdrop filter removed due to lack of firefox support and 
       // backdropFilter: isScrolled ? 'blur(10px)' : 'blur(0px)',
     }} 

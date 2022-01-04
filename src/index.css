@@ -1,26 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Poppins:wght@300;400;600;700;900&display=swap');
+
 :root {
-  --darker-gray: #212629;
-  --dark-gray: #34393d;
-  --darker-blue: #1e303b;
-  --dark-blue: #1b394d;
-  --light-gray: #909394;
+  --dark-gray: #1b2525;
+  --gray: #bdc1c4;
+  --light-gray: #dbe4e6;
+  --blue-white: #effbff;
   --cyan: #00a8a8;
   --red: #e84d4d;
+
 }
 
 html {
   /* scroll-behavior: smooth; */
   overflow-x: hidden;
+  font-family: 'Open Sans', sans-serif;
 }
 
 body {
+  color: var(--gray);
   margin: 0;
-  background-color: var(--darker-gray);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  background-color: var(--dark-gray);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  
+  font-family: 'Poppins', sans-serif;
+  color: var(--light-gray);
 }
 
 h1 {
@@ -43,9 +50,15 @@ h4 {
   font-weight: bold;
 }
 
+p, ul , li , a , blockquote {
+  font-weight: 300;
+}
+
 strong {
+  color: var(--light-gray);
   font-weight: 700;
 }
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
