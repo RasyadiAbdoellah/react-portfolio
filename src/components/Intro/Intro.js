@@ -19,8 +19,8 @@ const svgAnim = {
 export default function Intro() {
 
   /*--------------------- JS TYPEWRITER ANIMATION------------------*/
-  const text = 'Web Developer & UI/UX Designer'
-  const [typedText , setTypedText ] = React.useState('W')
+  const text = 'Fullstack Web Developer & UI/UX Designer'
+  const [typedText , setTypedText ] = React.useState('F')
 
   const updateTypedText = () => {
     const updateStr = typedText + text[typedText.length]

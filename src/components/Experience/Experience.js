@@ -98,12 +98,16 @@ export default function Experience (props) {
       </Helmet>
       <div id='about'>
         <h1>About me</h1>
-        <p>Before I became a developer, I was as a multimedia designer and photographer, creating digital content for a number of internet startups. Though I was officially a designer, like all startup positions I had to wear many hats, which eventually led me to front-end development.</p>
+        <p>I am a maker at heart. Whether its a custom desktop PC, a Raspberry Pi-powered smart TV, or a bicycle, I like trying to figure out how things work and what I can do to make it better. It's one of the reasons why I enjoy development work; there's always something in to tweak and improve.</p>
 
-        <p>After teaching myself CSS, HTML, and Javascript, I took a 60 hour/week, 3 month immersive web development program to expand my knowledge. I now apply my skills - both in design and development - towards helping create solutions that are both accessible and cleverly designed.</p>
+        <p>Before I became a developer I was as a multimedia designer and photographer, creating digital content for a number of internet startups. Like all startup positions I had to wear many hats, eventually leading me to learn CSS, HTML, and Javascript to tackle frontend development.</p>
+
+        <p>I took an immersive web development program to expand on what I learned by myself. I now apply my passion for building and my skills - both in design and development - towards helping create solutions that are both accessible and cleverly designed.</p>
+
+
       </div>
       <div id='experience'>
-        <h1>Where I've Been</h1>
+        <h1>Where I've been</h1>
 
         {
           data.allMarkdownRemark.nodes.map((md, i) => {
@@ -129,7 +133,7 @@ export default function Experience (props) {
         }        
       </div>
       <div id="tech">
-          <h1>Tech I'm Using</h1>
+          <h1>Tech I'm using</h1>
           <div className='inner'>
             <div>
               <h2>Frontend</h2>
