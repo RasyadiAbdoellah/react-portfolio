@@ -1,0 +1,127 @@
+/* ---------------------------- CONTAINER STYLING --------------------------- */
+
+#top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+/* -------------------------------------------------------------------------- */
+/* ------------------------ CONTAINER CONTENT STYLING ----------------------- */
+
+#top small {
+  color: var(--light-gray);
+  font-size: 1rem;
+  letter-spacing: .1rem;
+}
+
+.intro {
+  max-width: 760px;
+}
+
+.title {
+  color: var(--blue-white);
+  margin: 0;
+  font-size: clamp(2rem, 8vw, 4.5rem );
+  font-weight: 700;
+}
+
+.subtitle {
+  /* font-family: 'Roboto Mono', monospace; */
+  color: var(--light-gray);
+  font-size: clamp(1.3rem, 4vw, 2rem );
+  min-height: 1rem;
+  margin-top: .5rem;
+  margin-bottom: 1rem;
+  font-weight: 300;
+}
+
+.cursor {
+  color: var(--red);
+  font-weight: 600;
+  animation: 
+  blink .75s step-end infinite;
+}
+/* ---------------------- BLINKING ANIMATION KEYFRAMES ---------------------- */
+@keyframes blink {
+  from, to { opacity: 0 }
+  50% { opacity: 1; }
+}
+/* -------------------------------------------------------------------------- */
+
+.blurb {
+  color: var(--gray);
+  margin: 0;
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  text-align: left;
+}
+
+#top strong {
+  font-weight: 700;
+}
+
+.svg-logo{
+  position: absolute;
+  width: 500px;
+  left: -250px;
+  top: 150px;
+  z-index: -1000;
+  fill:none;
+  stroke:rgb(255, 255, 255);
+  stroke-miterlimit:10;
+  stroke-width:15px;
+  opacity: 0.1;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              RESPONSIVE STYLES                             */
+/* -------------------------------------------------------------------------- */
+
+/* Tablet */
+@media only screen and (max-width : 960px) {
+  .intro {
+    width: 90%;
+  }
+  .svg-logo {
+    left: -200px;
+    top: 20%;
+  }
+}
+
+/* Mobile */
+@media only screen and (max-width : 480px) {
+  .subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    height:3rem;
+  }
+  .blurb {
+    font-size: 1rem;
+  }
+  .svg-logo {
+    width: 425px;
+    left: -150px;
+    top: 15%;
+  }
+}
+
+/* Mobile small screen */
+
+@media only screen and (max-height : 640px) {
+  .svg-logo {
+    width: 425px;
+    left: -150px;
+    top: 5%;
+  }
+}
+
+/* MObile landscape */
+@media only screen and (max-height : 480px) {
+  .svg-logo {
+    width: 425px;
+    left: -150px;
+    top: -15%;
+  }
+}

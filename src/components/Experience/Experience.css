@@ -1,0 +1,131 @@
+/* ---------------------------- CONTAINER STYLING --------------------------- */
+
+#me {
+  max-width: 960px;
+  margin-top: 4rem;
+  padding: 0 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+#about {
+  width: 100%;
+  height: fit-content;
+  font-weight: 300;
+}
+
+#about p {
+  padding-right: 1rem;
+}
+
+#experience {
+  flex: 2;
+}
+
+#tech {
+  flex: 1;
+  margin-left: 20px;
+}
+
+#tech .inner {
+  width: 100% !important;
+  display: block !important;
+}
+
+#tech .inner>div {
+  flex:1 1;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                             CARD GROUP STYLING                             */
+/* -------------------------------------------------------------------------- */
+
+.card {
+  box-sizing: content-box;
+  border-left: 5px solid;
+  border-color: var(--dark-gray);
+  padding: 1rem 0;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card.active {
+  border-left-color:var(--red);
+  opacity: 1 !important;
+  background-color:rgba(255,255,255,0.05);
+}
+
+.card:hover {
+  border-left-color:var(--red);
+  opacity: 1 !important;
+  background-color:rgba(255,255,255,0.2);
+}
+
+.card * {
+  text-decoration: none;
+}
+
+.card>div {
+  padding: 0 1rem;
+}
+
+.card p {
+  font-weight: 300;
+}
+
+.card a {
+  color: white;
+  font-weight: unset;
+  text-decoration: underline 2px solid var(--cyan); 
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               CARD INTERNALS                               */
+/* -------------------------------------------------------------------------- */
+
+/* ------------------------------ CARD HEADING ------------------------------ */
+
+
+
+.card-heading * {
+  margin: 0;
+  width: auto;
+}
+
+/* ------------------------------ CARD CONTENT ------------------------------ */
+.card-content {
+  margin-top: 1rem;
+  line-height: 1.5rem;
+}
+
+.card-content ul{
+  list-style-type: '- ';
+  padding-inline-start: 2rem;
+  margin: 0;
+  padding: 1rem;
+  padding-bottom: 0;
+}
+
+.card-content p {
+  margin: 0;
+  margin-top: 1rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              RESPONSIVE STYLES                             */
+/* -------------------------------------------------------------------------- */
+
+/* Mobile */
+@media only screen and (max-width : 480px) {
+  #me {
+    flex-direction: column;
+  }
+  #experience, #about {
+    width: 100%;
+  }
+
+  #tech .inner {
+    display: block
+  }
+}
