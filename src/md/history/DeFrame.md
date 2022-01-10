@@ -3,10 +3,6 @@ company: "DeFrame Art"
 role: "Co-founder, Lead Designer & Frontend Developer"
 date: "November 2016 - October 2019"
 ---
-- **Created all visual design assets**, ranging from **company branding** to **UI/UX prototypes** for mobile and web apps
-
-- **Lead frontend web developer** responsible for creating the **dashboard web app using React + Redux**
-
-- As Co-founder, **conducted market research and analysis** on the feasibility and attractiveness of product value proposition, **created product feature roadmap**, and **developed go-to-market strategy** for Minimal Viable Product (MVP)
+**Lead UX Designer and Lead Frontend Web Developer** for DeFrame, a Boston-based art technologies startup dedicated to providing a more interactive and engaging experience for museums, galleries, and art spaces. Created all visual design assets, from company branding to UI/UX prototypes for mobile and web apps. Led development of dashboard web app using React + Redux. Also created product feature roadmap, and developed go-to-market strategy for Minimal Viable Product (MVP)
 
 

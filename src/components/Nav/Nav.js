@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom'
 import {motion as m, AnimateSharedLayout, useViewportScroll} from 'framer-motion'
 
 import './Nav.css'
+import logo from './nobg-noborder.png'
 
 const textVariants = {
   active: {fontWeight:'600', color:'#fff'},
@@ -23,21 +24,26 @@ export default function Nav({list}) {
   const { scrollY } = useViewportScroll()
   
   scrollY.onChange(() => {
-    scrollY.get() > 0 ? setIsScrolled(true) : setIsScrolled(false)
+    scrollY.get() > 300 ? setIsScrolled(true) : setIsScrolled(false)
   })
 
   return (
     <m.nav className="fixed-nav" 
     animate={{ 
       boxShadow: isScrolled ? '0 2px 20px rgba(0, 0, 0, 0.5)' : '0 0 0 rgba(0, 0, 0, 0)',
-      backgroundColor: isScrolled ? '#091216' : '#212629'
+      backgroundColor: isScrolled ? '#091216' : '#1b2525'
       // backdrop filter removed due to lack of firefox support and 
       // backdropFilter: isScrolled ? 'blur(10px)' : 'blur(0px)',
     }} 
     transition={{delay:.1}}
     >
       <div className="inner">
-        <div className="logo" style={{color:'white'}}>logo</div>
+          <m.img 
+            className="logo" 
+            src={logo}
+            initial={{opacity: 0}}
+            animate={!isScrolled ? {opacity: 0 }: {opacity: 1}} 
+          />
         <div className="wrapper">
           <AnimateSharedLayout>
             {list.map((entry, i) => {

@@ -4,6 +4,8 @@ module.exports = {
     description: "Designer turned developer with a love for building thoughtful, intuitive experiences."
   },
   plugins: [
+    "gatsby-plugin-root-import",
+    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {

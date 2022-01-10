@@ -4,36 +4,36 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
 }
 /* -------------------------------------------------------------------------- */
 /* ------------------------ CONTAINER CONTENT STYLING ----------------------- */
-#top * {
-  font-weight: 300;
-}
 
 #top small {
+  color: var(--light-gray);
   font-size: 1rem;
   letter-spacing: .1rem;
 }
 
 .intro {
-  color: white; 
-  width: 700px;
+  max-width: 760px;
 }
 
 .title {
+  color: var(--blue-white);
   margin: 0;
-  font-size: 3rem;
-  font-weight: 600;
+  font-size: clamp(2rem, 8vw, 4.5rem );
+  font-weight: 700;
 }
 
 .subtitle {
   /* font-family: 'Roboto Mono', monospace; */
-  font-size: 2rem;
+  color: var(--light-gray);
+  font-size: clamp(1.3rem, 4vw, 2rem );
   min-height: 1rem;
   margin-top: .5rem;
   margin-bottom: 1rem;
-  white-space: wrap; 
+  font-weight: 300;
 }
 
 .cursor {
@@ -50,7 +50,7 @@
 /* -------------------------------------------------------------------------- */
 
 .blurb {
-  color: var(--light-gray);
+  color: var(--gray);
   margin: 0;
   margin-bottom: 2rem;
   font-size: 1.2rem;
@@ -62,38 +62,66 @@
   font-weight: 700;
 }
 
-.button {
-  text-decoration: none;
-  font-size: 1.2rem;
-  padding: 25px 40px;
-  width: 150px;
-  margin-right: 10px;
-  color: white;
-  border:2px solid var(--cyan);
-  border-radius: 5px;
-  display: inline-block;
-}
-
-.button:active {
-  color: white;
-  background-color: var(--cyan);
+.svg-logo{
+  position: absolute;
+  width: 500px;
+  left: -250px;
+  top: 150px;
+  z-index: -1000;
+  fill:none;
+  stroke:rgb(255, 255, 255);
+  stroke-miterlimit:10;
+  stroke-width:15px;
+  opacity: 0.1;
 }
 
 /* -------------------------------------------------------------------------- */
 /*                              RESPONSIVE STYLES                             */
 /* -------------------------------------------------------------------------- */
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+
+/* Tablet */
+@media only screen and (max-width : 960px) {
   .intro {
     width: 90%;
   }
-  .title {
-    font-size: 2rem;
+  .svg-logo {
+    left: -200px;
+    top: 20%;
   }
+}
+
+/* Mobile */
+@media only screen and (max-width : 480px) {
   .subtitle {
     font-size: 1.3rem;
     margin-bottom: 1rem;
+    height:3rem;
   }
   .blurb {
     font-size: 1rem;
+  }
+  .svg-logo {
+    width: 425px;
+    left: -150px;
+    top: 15%;
+  }
+}
+
+/* Mobile small screen */
+
+@media only screen and (max-height : 640px) {
+  .svg-logo {
+    width: 425px;
+    left: -150px;
+    top: 5%;
+  }
+}
+
+/* MObile landscape */
+@media only screen and (max-height : 480px) {
+  .svg-logo {
+    width: 425px;
+    left: -150px;
+    top: -15%;
   }
 }

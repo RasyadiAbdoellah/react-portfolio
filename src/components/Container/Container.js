@@ -20,7 +20,7 @@ const containerAnim = {
         damping: 75,
         mass: 5
       },
-      delayChildren: .5,
+      delayChildren: .05,
       staggerChildren: 0.1
     }
   },
@@ -40,7 +40,7 @@ export default function Container (props) {
   const controls = useAnimation()
   const history = useHistory()
   const [ ref, inView ] = useInView({
-    threshold: 0.2
+    threshold: 0.3
   })
 
   const {  className, children, id } = props

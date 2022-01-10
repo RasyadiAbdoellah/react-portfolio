@@ -1,5 +1,5 @@
 .inline-link {
   font-weight: 600;
-  color: white;
+  color: var(--light-gray);
   text-decoration: underline 2px solid var(--cyan);
 }
