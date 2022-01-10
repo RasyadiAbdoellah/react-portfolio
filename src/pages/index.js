@@ -1,4 +1,6 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
+
 
 import Nav from 'components/Nav'
 import Intro from 'components/Intro'
@@ -15,6 +17,10 @@ const navList =  [
 function App() {
   return (
     <>
+      <Helmet>
+        <title>Rasyadi Abdoellah | Web Developer & UX Designer</title>
+        <description>Designer turned developer with a love for building thoughtful, intuitive experiences.</description>
+      </Helmet>
       <Nav list={navList}/>
       <Intro/>
       <Experience/>
