@@ -58,6 +58,13 @@ export default function Experience (props) {
         color: false
       }
     ], 
+    [
+      "Ruby on Rails",
+      {
+        className: "devicon-rails-plain",
+        color: false
+      }
+    ], 
     "Sequelize",  
     ["MySQL", { color: false }], 
     "PostgreSQL"
@@ -77,7 +84,7 @@ export default function Experience (props) {
     query {
       allMarkdownRemark(
         filter: {fields: {collection: {eq: "workHistory"}}}
-        sort: {fields: frontmatter___date, order: DESC}
+        sort: {fields: frontmatter___order, order: ASC}
       ) {
         nodes {
           html
