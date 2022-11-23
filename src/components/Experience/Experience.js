@@ -58,6 +58,7 @@ export default function Experience (props) {
         color: false
       }
     ], 
+    "Sequelize",  
     [
       "Ruby on Rails",
       {
@@ -65,7 +66,6 @@ export default function Experience (props) {
         color: false
       }
     ], 
-    "Sequelize",  
     ["MySQL", { color: false }], 
     "PostgreSQL"
   ]
