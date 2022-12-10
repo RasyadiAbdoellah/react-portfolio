@@ -1,7 +1,7 @@
 import React from 'react'
 import {motion as m, useAnimation} from 'framer-motion'
 import {useInView} from 'react-intersection-observer'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import './Container.css'
 
@@ -38,7 +38,7 @@ const containerAnim = {
 
 export default function Container (props) {
   const controls = useAnimation()
-  const history = useHistory()
+  const navigate = useNavigate()
   const [ ref, inView ] = useInView({
     threshold: 0.3
   })
@@ -48,9 +48,9 @@ export default function Container (props) {
   React.useEffect(() => {
     if(inView) {
       controls.start('center') 
-      history.push(`/#${id}`)
+      navigate(`/#${id}`)
     }
-  }, [controls, inView, history, id])
+  }, [controls, inView, navigate, id])
 
   return (
     <>
