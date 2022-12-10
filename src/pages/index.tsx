@@ -2,7 +2,7 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 
 
-import Nav from 'components/Nav'
+import Nav, {NavListType} from 'components/Nav'
 import Intro from 'components/Intro'
 import Experience from 'components/Experience'
 import Work from 'components/Work'
@@ -14,7 +14,7 @@ const navList =  [
   {path: '#top', content: 'Hi!'},
   {path: '#me', content: 'About'},
   {path: '#contact', content: 'Contact'}
-]
+] as NavListType[]
 
 function App() {
   return (

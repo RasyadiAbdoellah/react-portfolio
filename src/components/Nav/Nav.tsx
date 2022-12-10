@@ -16,8 +16,16 @@ const underlineSpring = {
   damping: 30
 };
 
+export type NavListType = {
+  path: string, 
+  content: string, 
+  altContent: string
+}
+export type NavProps = {
+  list: NavListType[]
+}
 
-export default function Nav({list}) {
+export default function Nav({ list }: NavProps ) {
   
   const [isScrolled, setIsScrolled] = React.useState(false)
   const { hash } = useLocation()

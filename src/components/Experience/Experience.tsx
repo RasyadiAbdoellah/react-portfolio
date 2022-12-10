@@ -34,7 +34,6 @@ const activeContentAnim = {
   hidden: {
     opacity: 0,
     height: 0,
-    visibility: 'hidden',
     transition: {
       opacity: { duration: 0.3 },
       height: { duration: 0.5, },
@@ -44,7 +43,7 @@ const activeContentAnim = {
 }
 
 
-export default function Experience (props) {
+export default function Experience () {
 
   const [current, setCurrent] = React.useState(0)
 
@@ -117,7 +116,7 @@ export default function Experience (props) {
         <h1>Where I've been</h1>
 
         {
-          data.allMarkdownRemark.nodes.map((md, i) => {
+          data.allMarkdownRemark.nodes.map((md: any, i: number) => {
             return (
               <m.div 
                 className={`card ${ current === i ? 'active' : ''}`}
@@ -129,7 +128,7 @@ export default function Experience (props) {
                   <p>{md.frontmatter.date}</p>
                 </m.div>
                 <m.div 
-                  className="card-content" 
+                  className={`card-content ${ current === i ? 'active' : ''}`} 
                   animate={current === i ? 'active' : 'hidden'} 
                   variants={activeContentAnim} 
                   dangerouslySetInnerHTML={{__html:md.html}}>
