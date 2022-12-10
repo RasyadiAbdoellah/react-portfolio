@@ -1,9 +1,9 @@
 import React from 'react'
 import {motion as m} from 'framer-motion'
 
-import Container from 'components/Container'
-import AnimLink from 'components/AnimLink'
-import AnimBtn from 'components/AnimBtn'
+import Container from '../Container'
+import AnimLink from '../AnimLink'
+import AnimBtn from '../AnimBtn'
 
 import './Intro.css'
 

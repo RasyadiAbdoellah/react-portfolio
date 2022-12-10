@@ -4,9 +4,9 @@ import { FontAwesomeIcon as Icon} from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
 
-import Container from 'components/Container'
-import AnimLink from 'components/AnimLink'
-import AnimBtn from 'components/AnimBtn'
+import Container from '../Container'
+import AnimLink from '../AnimLink'
+import AnimBtn from '../AnimBtn'
 import './Contact.css'
 
 export default function Contact (props) {

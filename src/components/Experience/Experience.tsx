@@ -3,8 +3,8 @@ import { graphql, useStaticQuery } from 'gatsby'
 import { motion as m } from 'framer-motion'
 import { Helmet } from 'react-helmet'
 
-import Container from 'components/Container'
-import IconList from 'components/IconList'
+import Container from '../Container'
+import IconList from '../IconList'
 import './Experience.css'
 
 const cardAnim = {

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Container from 'components/Container'
+import Container from '../Container'
 
 export default function Skills (props) {
   return (

@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { motion as m } from 'framer-motion'
 
-import Container from 'components/Container'
+import Container from '../Container'
 import './Work.css'
 
 const cardAnim = {
