@@ -5,13 +5,14 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-root-import",
-    `gatsby-plugin-react-helmet`,
+    "gatsby-plugin-react-helmet",
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `projects`,
-        path: `${__dirname}/src/md/projects`,
+        "name": "pages",
+        "path": "./src/pages/"
       },
+      __key: "pages"
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -24,6 +25,19 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          {
+            resolve: `gatsby-remark-external-links`,
+            options: {
+              target: "_blank",
+            },
+          },
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-external-links`,
             options: {

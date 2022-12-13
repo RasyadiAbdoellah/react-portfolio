@@ -1,2 +1,2 @@
 export { default } from './Nav'
-export { NavProps, NavListType } from './Nav'
+export type { NavProps, NavListType } from './Nav'

@@ -1,4 +1,4 @@
-exports.onCreateNode = ({ node, getNode, actions }) => {
+exports.onCreateNode = ({ node, getNode, actions }: any) => {
   const { createNodeField } = actions;
   if (node.internal.type === `MarkdownRemark`) {
     const parent = getNode(node.parent);

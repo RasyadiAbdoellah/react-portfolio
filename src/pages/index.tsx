@@ -5,7 +5,6 @@ import { Helmet } from 'react-helmet'
 import Nav, {NavListType} from 'components/Nav'
 import Intro from 'components/Intro'
 import Experience from 'components/Experience'
-import Work from 'components/Work'
 import Contact from 'components/Contact'
 
 import logo from 'logo.svg'
