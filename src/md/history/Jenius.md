@@ -1,5 +1,5 @@
 ---
-order: 2
+order: 3
 role: "Digital Banking Solution Developer"
 company: "Bank BTPN"
 date: "October 2019 - April 2022"

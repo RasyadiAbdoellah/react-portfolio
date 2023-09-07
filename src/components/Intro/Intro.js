@@ -51,7 +51,7 @@ export default function Intro() {
       <m.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{ opacity: {duration: 0.5, delay: 1.75}}} style={{textAlign: 'center'}}>
         {/* onClick handler below sets animation direction. payload is the page index in navList. i.e linking to /me is 3rd in navList array so index = 2 */}
         <p className="blurb">
-          Designer turned developer with a love for building thoughtful, intuitive experiences. I'm a <strong>Frontend Developer</strong>, currently building and managing web applications with <strong>Jenius</strong>, particularly <AnimLink href="https://www.jenius.com" target="_blank">Jenius.com</AnimLink> and <AnimLink href="https://www.cocreate.id" target="_blank">CoCreate.id</AnimLink>.
+          Designer turned developer with a love for building thoughtful, intuitive experiences. I'm a <strong>Frontend Developer</strong>, currently building web applications at <AnimLink href="https://www.monstercat.com" target="_blank">Monstercat</AnimLink>.
         </p>
         <a href='#contact'><AnimBtn featured>Get in touch</AnimBtn></a>
       </m.div>

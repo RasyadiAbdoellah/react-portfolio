@@ -1,5 +1,5 @@
 ---
-order: 4
+order: 5
 role: "Multiple Roles"
 company: "Shopdeca.com"
 date: "August 2013 - July 2015"
