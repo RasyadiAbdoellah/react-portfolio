@@ -105,11 +105,11 @@ export default function Experience (props) {
       </Helmet>
       <div id='about'>
         <h1>About me</h1>
-        <p>I am a maker at heart. Whether its a custom desktop PC, a Raspberry Pi-powered smart TV, or a bicycle, I like trying to figure out how things work and what I can do to make it better. It's one of the reasons why I enjoy development work; there's always something in to tweak and improve.</p>
+        <p>I am a maker at heart. Whether its a custom desktop PC, a Raspberry Pi-powered smart TV, or a bicycle, I like trying to figure out how things work and what I can do to make it better. It's one of the reasons why I enjoy development work; there's always something to tweak and improve.</p>
 
         <p>Before I became a developer I was as a multimedia designer and photographer, creating digital content for a number of internet startups. Like all startup positions I had to wear many hats, eventually leading me to learn CSS, HTML, and Javascript to tackle frontend development.</p>
 
-        <p>I took an immersive web development program to expand on what I learned by myself. I now apply my passion for building and my skills - both in design and development - towards helping create solutions that are both accessible and cleverly designed.</p>
+        <p>I took an immersive web development program to expand on what I learned by myself. I now apply my passion for building and my skills - both in design and development - towards creating solutions that are both accessible and cleverly designed.</p>
 
 
       </div>
